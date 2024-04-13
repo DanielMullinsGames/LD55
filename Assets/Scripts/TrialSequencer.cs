@@ -24,15 +24,20 @@ public class TrialSequencer : ManagedBehaviour
         foreach (var juror in bench.Jurors)
         {
             yield return juror.Vote();
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.5f);
         }
 
-        // VERDICT
+        // COUNT
 
         foreach (var juror in bench.Jurors)
         {
             juror.CleanupVotes();
             yield return new WaitForSeconds(0.01f);
         }
+
+        // VERDICT
+
+        yield return new WaitForSeconds(1f);
+        bench.Jurors.ForEach(x => x.OnTrialEnded());
     }
 }

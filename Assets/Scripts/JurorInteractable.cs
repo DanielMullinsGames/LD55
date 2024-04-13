@@ -8,6 +8,21 @@ public class JurorInteractable : DraggableInteractable
 {
     public bool Benched { get; set; } = true; //<--
 
+    public Disposition VoteOutcome
+    {
+        get
+        {
+            if (votes.Count == 0)
+            {
+                return Disposition.None;
+            }
+            else
+            {
+                return votes[0].Outcome;
+            }
+        }
+    }
+
     [Title("Juror")]
     public JurorData Data => data;
     [SerializeField]
@@ -38,22 +53,34 @@ public class JurorInteractable : DraggableInteractable
         anim.ShowDispositionType(disposition);
     }
 
+    public void OnTrialEnded()
+    {
+        voted = false;
+    }
+
     public IEnumerator Vote()
     {
         var vote = disposition;
-        yield return anim.VoteAnimationSequence(vote, true);
+        if (vote == Disposition.Uncertain)
+        {
+            vote = DetermineUncertainVote();
+        }
+        yield return anim.VoteAnimationSequence(vote, disposition == Disposition.Uncertain);
         voted = true;
 
-        int numVotes = data.baseVoteCount;
-        for (int i = 0; i < numVotes; i++)
+        if (vote != Disposition.None)
         {
-            var voteObj = Instantiate(voteCardPrefab);
-            voteObj.transform.position = transform.position + Vector3.down * 1f;
-            voteObj.GetComponent<Vote>().Initialize(vote == Disposition.Guilty);
-            votes.Add(voteObj.GetComponent<Vote>());
-            Tween.Position(voteObj.transform, transform.position + Vector3.up * (2f + (i * 0.75f)), 0.2f, 0f, Tween.EaseOutStrong);
-            Tween.Rotate(voteObj.transform, new Vector3(0f, 0f, -3f + (Random.value * 6f)), Space.World, 0.25f, 0f, Tween.EaseOutStrong);
-            yield return new WaitForSeconds(0.1f);
+            int numVotes = data.baseVoteCount;
+            for (int i = 0; i < numVotes; i++)
+            {
+                var voteObj = Instantiate(voteCardPrefab);
+                voteObj.transform.position = transform.position + Vector3.down * 1f;
+                voteObj.GetComponent<Vote>().Initialize(vote == Disposition.Guilty);
+                votes.Add(voteObj.GetComponent<Vote>());
+                Tween.Position(voteObj.transform, transform.position + Vector3.up * (2f + (i * 0.75f)), 0.2f, 0f, Tween.EaseOutStrong);
+                Tween.Rotate(voteObj.transform, new Vector3(0f, 0f, -3f + (Random.value * 6f)), Space.World, 0.25f, 0f, Tween.EaseOutStrong);
+                yield return new WaitForSeconds(0.1f);
+            }
         }
     }
 
@@ -64,5 +91,40 @@ public class JurorInteractable : DraggableInteractable
             vote.Cleanup();
         }
         votes.Clear();
+    }
+
+    private Disposition DetermineUncertainVote()
+    {
+        var leftJurorVote = GetLeftJurorVote();
+        switch (data.decisionMethod)
+        {
+            case DecisionMethod.OppositeOfLeft:
+                if (leftJurorVote == Disposition.None)
+                {
+                    return Disposition.None;
+                }
+                else
+                {
+                    return leftJurorVote == Disposition.Guilty ? Disposition.Innocent : Disposition.Guilty;
+                }
+            case DecisionMethod.SameAsLeft:
+                return leftJurorVote;
+            default:
+                return Disposition.None;
+        }
+    }
+
+    private Disposition GetLeftJurorVote()
+    {
+        int index = BenchArea.instance.Jurors.IndexOf(this);
+        if (index > 0)
+        {
+            var leftJuror = BenchArea.instance.Jurors[index - 1];
+            return leftJuror.VoteOutcome;
+        }
+        else
+        {
+            return Disposition.None;
+        }
     }
 }

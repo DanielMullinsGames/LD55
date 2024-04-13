@@ -66,7 +66,7 @@ public class JurorAnimController : ManagedBehaviour
         {
             anim.SetTrigger("voteguilty");
         }
-        else
+        else if (vote == Disposition.Innocent)
         {
             anim.SetTrigger("voteinnocent");
         }

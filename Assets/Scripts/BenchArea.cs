@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BenchArea : ManagedBehaviour
 {
+    public static BenchArea instance;
     public List<JurorInteractable> Jurors => jurorsOnBench;
 
     [SerializeField]
@@ -17,6 +18,7 @@ public class BenchArea : ManagedBehaviour
 
     protected override void ManagedInitialize()
     {
+        instance = this;
         UpdateJurorPositions(null, immediate: true);
     }
 

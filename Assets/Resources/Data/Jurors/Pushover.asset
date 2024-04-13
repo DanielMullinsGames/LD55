@@ -15,3 +15,5 @@ MonoBehaviour:
   nameText: Pushover
   detailText: Votes the same as left neighbour
   disposition: 3
+  baseVoteCount: 1
+  decisionMethod: 2

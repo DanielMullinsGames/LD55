@@ -15,3 +15,5 @@ MonoBehaviour:
   nameText: Contrarian
   detailText: Votes the opposite of left neighbour
   disposition: 3
+  baseVoteCount: 1
+  decisionMethod: 1

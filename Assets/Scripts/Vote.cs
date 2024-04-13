@@ -5,6 +5,8 @@ using Pixelplacement;
 
 public class Vote : ManagedBehaviour
 {
+    public Disposition Outcome { get; private set; }
+
     [SerializeField]
     private SpriteRenderer fillRenderer = default;
 
@@ -34,6 +36,7 @@ public class Vote : ManagedBehaviour
 
     public void Initialize(bool guilty)
     {
+        Outcome = guilty ? Disposition.Guilty : Disposition.Innocent;
         letterRenderer.sprite = guilty ? guiltyLetterSprite : innocentLetterSprite;
         letterRenderer.color = guilty ? guiltyLetterColor : innocentLetterColor;
         fillRenderer.color = guilty ? guiltyFillColor : innocentFillColor;

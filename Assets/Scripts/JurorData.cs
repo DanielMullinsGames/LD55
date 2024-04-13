@@ -10,6 +10,13 @@ public enum Disposition
     Uncertain,
 }
 
+public enum DecisionMethod
+{
+    Normal,
+    OppositeOfLeft,
+    SameAsLeft,
+}
+
 [CreateAssetMenu(fileName = "JurorData", menuName = "JurorData", order = 1)]
 public class JurorData : ScriptableObject
 {
@@ -18,4 +25,5 @@ public class JurorData : ScriptableObject
     public string detailText;
     public Disposition disposition = Disposition.Guilty;
     public int baseVoteCount = 1;
+    public DecisionMethod decisionMethod = DecisionMethod.Normal;
 }
