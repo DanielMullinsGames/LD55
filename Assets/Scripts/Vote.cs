@@ -42,6 +42,16 @@ public class Vote : ManagedBehaviour
         fillRenderer.color = guilty ? guiltyFillColor : innocentFillColor;
     }
 
+    public void ChangeVote(bool guilty)
+    {
+        Tween.LocalScale(transform, new Vector2(0.25f, 1.25f), 0.1f, 0f, Tween.EaseIn, completeCallback: () =>
+        {
+            Initialize(guilty);
+            Tween.LocalScale(transform, new Vector2(1.25f, 1.25f), 0.1f, 0f, Tween.EaseOut);
+        });
+        
+    }
+
     public void Cleanup()
     {
         var crumpled = Instantiate(crumpledPrefab).transform;

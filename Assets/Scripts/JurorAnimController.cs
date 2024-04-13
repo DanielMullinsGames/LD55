@@ -55,6 +55,11 @@ public class JurorAnimController : ManagedBehaviour
         sortingGroup.sortingLayerName = draggable.BeingDragged ? "Cursor" : "Default";
     }
 
+    public void SetTrigger(string trigger)
+    {
+        anim.SetTrigger(trigger);
+    }
+
     public IEnumerator VoteAnimationSequence(Disposition vote, bool deliberate)
     {
         if (deliberate)

@@ -89,6 +89,14 @@ public class JurorInteractable : DraggableInteractable
         }
     }
 
+    public void ChangeVotes(Disposition outcome)
+    {
+        foreach (var vote in votes)
+        {
+            vote.ChangeVote(outcome == Disposition.Guilty);
+        }
+    }
+
     private IEnumerator CastVote(Disposition vote)
     {
         var voteObj = Instantiate(voteCardPrefab);
@@ -107,6 +115,14 @@ public class JurorInteractable : DraggableInteractable
         switch (action)
         {
             case AfterVoteAction.ChangeLeftToInnocent:
+                anim.SetTrigger("priest");
+                yield return new WaitForSeconds(0.5f);
+                var leftJuror = GetLeftJuror();
+                if (leftJuror != null)
+                {
+                    leftJuror.ChangeVotes(Disposition.Innocent);
+                }
+                yield return new WaitForSeconds(1f);
                 break;
             case AfterVoteAction.ExtraVote:
                 yield return CastVote(vote);
@@ -137,12 +153,24 @@ public class JurorInteractable : DraggableInteractable
         }
     }
 
-    private Disposition GetLeftJurorVote()
+    private JurorInteractable GetLeftJuror()
     {
         int index = BenchArea.instance.Jurors.IndexOf(this);
         if (index > 0)
         {
-            var leftJuror = BenchArea.instance.Jurors[index - 1];
+            return BenchArea.instance.Jurors[index - 1];
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    private Disposition GetLeftJurorVote()
+    {
+        var leftJuror = GetLeftJuror();
+        if (leftJuror != null)
+        {
             return leftJuror.VoteOutcome;
         }
         else
