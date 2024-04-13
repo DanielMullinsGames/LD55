@@ -28,5 +28,11 @@ public class TrialSequencer : ManagedBehaviour
         }
 
         // VERDICT
+
+        foreach (var juror in bench.Jurors)
+        {
+            juror.CleanupVotes();
+            yield return new WaitForSeconds(0.01f);
+        }
     }
 }

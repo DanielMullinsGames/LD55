@@ -20,6 +20,8 @@ public class JurorInteractable : DraggableInteractable
     [SerializeField]
     private GameObject voteCardPrefab = default;
 
+    private List<Vote> votes = new();
+
     private Disposition disposition = Disposition.Uncertain;
     private bool voted = false;
 
@@ -48,9 +50,19 @@ public class JurorInteractable : DraggableInteractable
             var voteObj = Instantiate(voteCardPrefab);
             voteObj.transform.position = transform.position + Vector3.down * 1f;
             voteObj.GetComponent<Vote>().Initialize(vote == Disposition.Guilty);
+            votes.Add(voteObj.GetComponent<Vote>());
             Tween.Position(voteObj.transform, transform.position + Vector3.up * (2f + (i * 0.75f)), 0.2f, 0f, Tween.EaseOutStrong);
             Tween.Rotate(voteObj.transform, new Vector3(0f, 0f, -3f + (Random.value * 6f)), Space.World, 0.25f, 0f, Tween.EaseOutStrong);
             yield return new WaitForSeconds(0.1f);
         }
+    }
+
+    public void CleanupVotes()
+    {
+        foreach (var vote in votes)
+        {
+            vote.Cleanup();
+        }
+        votes.Clear();
     }
 }

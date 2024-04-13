@@ -203,6 +203,7 @@ MonoBehaviour:
   innocentFillColor: {r: 0.16078432, g: 0.16078432, b: 0.18039216, a: 1}
   guiltyLetterColor: {r: 0.043137256, g: 0.043137256, b: 0.07058824, a: 1}
   innocentLetterColor: {r: 0.8980392, g: 0.8509804, b: 0.69411767, a: 1}
+  crumpledPrefab: {fileID: 1557575496253425644, guid: 22e26c44f3d51854497f749853528fd6, type: 3}
 --- !u!1 &7306156230969351694
 GameObject:
   m_ObjectHideFlags: 0
