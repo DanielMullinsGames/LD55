@@ -589,6 +589,7 @@ MonoBehaviour:
   boundsArea: {fileID: 0}
   data: {fileID: 0}
   anim: {fileID: 2458357030309681480}
+  voteCardPrefab: {fileID: 7306156229353182649, guid: 84a07bd60331d514c9de367869ba9360, type: 3}
 --- !u!61 &2066569423664178816
 BoxCollider2D:
   m_ObjectHideFlags: 0

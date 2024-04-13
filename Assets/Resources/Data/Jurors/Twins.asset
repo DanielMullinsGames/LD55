@@ -15,3 +15,4 @@ MonoBehaviour:
   nameText: Twins
   detailText: 'Action: Votes a second time'
   disposition: 2
+  baseVoteCount: 2

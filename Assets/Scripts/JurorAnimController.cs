@@ -70,7 +70,7 @@ public class JurorAnimController : ManagedBehaviour
         {
             anim.SetTrigger("voteinnocent");
         }
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(0.25f);
     }
 
     public void SetDispositionShown(bool shown, bool immediate = false)

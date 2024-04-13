@@ -17,4 +17,5 @@ public class JurorData : ScriptableObject
     [TextArea]
     public string detailText;
     public Disposition disposition = Disposition.Guilty;
+    public int baseVoteCount = 1;
 }

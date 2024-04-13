@@ -616,7 +616,7 @@ TextureImporter:
         width: 72
         height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -637,7 +637,7 @@ TextureImporter:
         width: 68
         height: 89
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -658,7 +658,7 @@ TextureImporter:
         width: 72
         height: 52
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -679,7 +679,7 @@ TextureImporter:
         width: 68
         height: 89
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -687,6 +687,27 @@ TextureImporter:
       bones: []
       spriteID: 1d8273fc51974e3468e15c6007ee5ea7
       internalID: 1944409702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jurors_sheet_28
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 879
+        width: 138
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e2db54d4fae51a46b4275aadcf9707e
+      internalID: 1080892540
       vertices: []
       indices: 
       edges: []
@@ -721,6 +742,7 @@ TextureImporter:
       jurors_sheet_11: 221689676
       jurors_sheet_25: -1712716931
       jurors_sheet_21: 369909287
+      jurors_sheet_28: 1080892540
       jurors_sheet_24: -1309186511
       jurors_sheet_16: -882351209
       jurors_sheet_4: 446888085
