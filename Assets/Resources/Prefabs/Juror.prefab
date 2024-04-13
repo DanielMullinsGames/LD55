@@ -587,6 +587,7 @@ MonoBehaviour:
   baseSortOrder: 0
   snapToCursorCenter: 1
   boundsArea: {fileID: 0}
+  data: {fileID: 0}
   anim: {fileID: 2458357030309681480}
 --- !u!61 &2066569423664178816
 BoxCollider2D:
@@ -856,7 +857,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 446888085, guid: 7a72a7b833bc9154b8b86a0ae66e986d, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: 0b89e8d188a3fdb4995237f6b7359504, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1496,7 +1497,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 1963302392, guid: 7a72a7b833bc9154b8b86a0ae66e986d, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: 0b89e8d188a3fdb4995237f6b7359504, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

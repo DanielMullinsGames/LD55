@@ -268,7 +268,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: contrarian
+  m_text: name
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5ec9bebfdcdea754b9a642d94dc33941, type: 2}
   m_sharedMaterial: {fileID: -9212374381290911721, guid: 5ec9bebfdcdea754b9a642d94dc33941, type: 2}
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 2.1
+  m_fontSize: 2.4
   m_fontSizeBase: 7
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -708,7 +708,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: make left juror vote innocent
+  m_text: detail text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0a57a62a534565645ba4d0511b64c648, type: 2}
   m_sharedMaterial: {fileID: 2033745107910324455, guid: 0a57a62a534565645ba4d0511b64c648, type: 2}

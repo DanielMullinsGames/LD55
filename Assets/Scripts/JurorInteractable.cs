@@ -16,8 +16,11 @@ public class JurorInteractable : DraggableInteractable
     [SerializeField]
     private JurorAnimController anim = default;
 
+    private Disposition disposition = Disposition.Uncertain;
+
     protected override void ManagedInitialize()
     {
+        disposition = data.disposition;
         anim.SetDispositionShown(false, immediate: true);
     }
 
@@ -25,5 +28,6 @@ public class JurorInteractable : DraggableInteractable
     {
         base.ManagedUpdate();
         anim.SetDispositionShown(!BeingDragged && Benched);
+        anim.ShowDispositionType(disposition);
     }
 }

@@ -71,8 +71,25 @@ public class JurorAnimController : ManagedBehaviour
         dispositionShown = shown;
     }
 
-    public void ShowDispositionType()
+    public void ShowDispositionType(Disposition disposition)
     {
-
+        switch (disposition)
+        {
+            case Disposition.Guilty:
+                bubbleLetter.sprite = guiltyLetterSprite;
+                bubbleLetter.color = innocentFillColor;
+                topBubbleFill.color = bottomBubbleFill.color = guiltyFillColor;
+                break;
+            case Disposition.Innocent:
+                bubbleLetter.sprite = innocentLetterSprite;
+                bubbleLetter.color = guiltyFillColor;
+                topBubbleFill.color = bottomBubbleFill.color = innocentFillColor;
+                break;
+            case Disposition.Uncertain:
+                bubbleLetter.sprite = uncertainLetterSprite;
+                bubbleLetter.color = innocentFillColor;
+                topBubbleFill.color = bottomBubbleFill.color = Color.gray;
+                break;
+        }
     }
 }
