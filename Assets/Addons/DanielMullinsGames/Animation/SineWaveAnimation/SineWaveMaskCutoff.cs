@@ -16,9 +16,16 @@ public class SineWaveMaskCutoff : ManagedBehaviour
     [SerializeField]
     private float maxValue = default;
 
+    float offset = default;
+
+    protected override void ManagedInitialize()
+    {
+        offset = Mathf.PI * 2f * Random.value;
+    }
+
     public override void ManagedUpdate()
     {
-        float sine = (Mathf.Sin(Time.time * speed) * 0.5f) + 0.5f;
+        float sine = (Mathf.Sin(Time.time * speed + offset) * 0.5f) + 0.5f;
         mask.alphaCutoff = Mathf.Lerp(minValue, maxValue, sine);
     }
 }
