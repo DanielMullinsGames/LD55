@@ -30,4 +30,10 @@ public class JurorInteractable : DraggableInteractable
         anim.SetDispositionShown(!BeingDragged && Benched);
         anim.ShowDispositionType(disposition);
     }
+
+    public IEnumerator Vote()
+    {
+        var vote = disposition;
+        yield return anim.VoteAnimationSequence(vote, true);
+    }
 }

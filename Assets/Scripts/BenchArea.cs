@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BenchArea : ManagedBehaviour
 {
+    public List<JurorInteractable> Jurors => jurorsOnBench;
+
     [SerializeField]
     private float maxWidth = default;
 
