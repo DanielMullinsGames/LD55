@@ -12,7 +12,10 @@ public class Interactable : ManagedBehaviour
         }
     }
 
-    public int sortOrder = 0;
+    public int SortOrder => baseSortOrder + SortOrderAdjustment;
+    [SerializeField]
+    private int baseSortOrder = 0;
+    public int SortOrderAdjustment { get; set; }
 
     public System.Action<Interactable> CursorEntered { get; set; }
     public System.Action<Interactable> CursorExited { get; set; }
@@ -30,7 +33,7 @@ public class Interactable : ManagedBehaviour
 
     public virtual int CompareInteractionSortOrder(Interactable other)
     {
-        return other.sortOrder - sortOrder;
+        return other.SortOrder - SortOrder;
     }
 
     public void SetCollisionEnabled(bool enabled)

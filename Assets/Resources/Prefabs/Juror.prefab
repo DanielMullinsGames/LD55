@@ -380,12 +380,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2066569423664178818}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 871101d3f3742db4c84f9d171fdd810e, type: 3}
+  m_Script: {fileID: 11500000, guid: 9724cff6d25d2dd489c2dc08716d7645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortOrder: 0
+  baseSortOrder: 0
   snapToCursorCenter: 1
   boundsArea: {fileID: 0}
+  anim: {fileID: 2458357030309681480}
 --- !u!61 &2066569423664178816
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -835,6 +836,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   draggable: {fileID: 2066569423664178817}
   anim: {fileID: 2066569423994955880}
+  sortingGroup: {fileID: 2066569423994955883}
 --- !u!1 &2066569424292694739
 GameObject:
   m_ObjectHideFlags: 0

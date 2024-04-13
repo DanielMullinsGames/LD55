@@ -244,8 +244,8 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1427943163
+  m_SortingLayer: 1
   m_SortingOrder: 5
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &703435353120380793
@@ -548,6 +548,7 @@ GameObject:
   m_Component:
   - component: {fileID: 703435353817029496}
   - component: {fileID: 703435353817029479}
+  - component: {fileID: 8519501493862191394}
   m_Layer: 0
   m_Name: JurorBenchCard
   m_TagString: Untagged
@@ -587,9 +588,26 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703435353817029497}
   m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1427943163
+  m_SortingLayer: 1
   m_SortingOrder: 2
+--- !u!114 &8519501493862191394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703435353817029497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e1208b9cd275b24083caa7293a4e19f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  juror: {fileID: 0}
+  xExtent: 5.55
+  sortingGroup: {fileID: 703435353817029479}
+  titleText: {fileID: 703435353120380793}
+  detailText: {fileID: 703435353838365967}
 --- !u!1 &703435353838365952
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,8 +684,8 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1427943163
+  m_SortingLayer: 1
   m_SortingOrder: 3
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &703435353838365967
