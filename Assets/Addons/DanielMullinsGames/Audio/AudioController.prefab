@@ -394,6 +394,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7535057227221819953}
   - component: {fileID: 519299186539017766}
+  - component: {fileID: 5088409662368681265}
   m_Layer: 0
   m_Name: AudioController
   m_TagString: Untagged
@@ -431,11 +432,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127887ef6cfebfa4286f0be7c79aed78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixer: {fileID: 0}
-  mixerGroups: []
-  masterSFXMixerGroup: {fileID: 0}
-  masterBGMMixerGroup: {fileID: 0}
   loopSources:
   - {fileID: 4240717753906658501}
   - {fileID: 7657052351054755753}
   - {fileID: 5797831654533381407}
+--- !u!81 &5088409662368681265
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7531839449229222775}
+  m_Enabled: 1
