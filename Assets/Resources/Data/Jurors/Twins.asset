@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Twins
   m_EditorClassIdentifier: 
   nameText: Twins
-  detailText: 'Action: Votes a second time'
+  detailText: 'After Vote: Votes a second time'
   disposition: 2
-  baseVoteCount: 2
+  decisionMethod: 0
+  afterVoteAction: 2

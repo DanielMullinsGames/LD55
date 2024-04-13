@@ -17,6 +17,13 @@ public enum DecisionMethod
     SameAsLeft,
 }
 
+public enum AfterVoteAction
+{
+    None,
+    ChangeLeftToInnocent,
+    ExtraVote,
+}
+
 [CreateAssetMenu(fileName = "JurorData", menuName = "JurorData", order = 1)]
 public class JurorData : ScriptableObject
 {
@@ -24,6 +31,6 @@ public class JurorData : ScriptableObject
     [TextArea]
     public string detailText;
     public Disposition disposition = Disposition.Guilty;
-    public int baseVoteCount = 1;
     public DecisionMethod decisionMethod = DecisionMethod.Normal;
+    public AfterVoteAction afterVoteAction = AfterVoteAction.None;
 }

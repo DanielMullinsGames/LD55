@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pixelplacement;
 
 public class JurorCard : ManagedBehaviour
 {
@@ -18,15 +19,33 @@ public class JurorCard : ManagedBehaviour
     [SerializeField]
     private TMPro.TextMeshPro detailText = default;
 
+    [SerializeField]
+    private Transform actionBadge = default;
+
     private void Start()
     {
         DisplayData(juror.Data);
+        juror.Card = this;
     }
 
     public void DisplayData(JurorData data)
     {
         titleText.text = data.nameText;
         detailText.text = data.detailText;
+        actionBadge.gameObject.SetActive(data.afterVoteAction != AfterVoteAction.None);
+    }
+
+    public void SetActionBadgePulsing(bool pulsing)
+    {
+        if (pulsing)
+        {
+            Tween.LocalScale(actionBadge, Vector2.one * 1.5f, 0.1f, 0f, Tween.EaseInOut, Tween.LoopType.PingPong);
+        }
+        else
+        {
+            Tween.Cancel(actionBadge.GetInstanceID());
+            Tween.LocalScale(actionBadge, Vector2.one, 0.1f, 0, Tween.EaseInOut);
+        }
     }
 
     public override void ManagedUpdate()

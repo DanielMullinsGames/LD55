@@ -7,6 +7,7 @@ using Pixelplacement;
 public class JurorInteractable : DraggableInteractable
 {
     public bool Benched { get; set; } = true; //<--
+    public JurorCard Card { get; set; }
 
     public Disposition VoteOutcome
     {
@@ -58,7 +59,16 @@ public class JurorInteractable : DraggableInteractable
         voted = false;
     }
 
-    public IEnumerator Vote()
+    public void CleanupVotes()
+    {
+        foreach (var vote in votes)
+        {
+            vote.Cleanup();
+        }
+        votes.Clear();
+    }
+
+    public IEnumerator VoteSequence()
     {
         var vote = disposition;
         if (vote == Disposition.Uncertain)
@@ -70,27 +80,40 @@ public class JurorInteractable : DraggableInteractable
 
         if (vote != Disposition.None)
         {
-            int numVotes = data.baseVoteCount;
-            for (int i = 0; i < numVotes; i++)
-            {
-                var voteObj = Instantiate(voteCardPrefab);
-                voteObj.transform.position = transform.position + Vector3.down * 1f;
-                voteObj.GetComponent<Vote>().Initialize(vote == Disposition.Guilty);
-                votes.Add(voteObj.GetComponent<Vote>());
-                Tween.Position(voteObj.transform, transform.position + Vector3.up * (2f + (i * 0.75f)), 0.2f, 0f, Tween.EaseOutStrong);
-                Tween.Rotate(voteObj.transform, new Vector3(0f, 0f, -3f + (Random.value * 6f)), Space.World, 0.25f, 0f, Tween.EaseOutStrong);
-                yield return new WaitForSeconds(0.1f);
-            }
+            yield return CastVote(vote);
+        }
+
+        if (data.afterVoteAction != AfterVoteAction.None)
+        {
+            yield return PostVoteActionSequence(data.afterVoteAction, vote);
         }
     }
 
-    public void CleanupVotes()
+    private IEnumerator CastVote(Disposition vote)
     {
-        foreach (var vote in votes)
+        var voteObj = Instantiate(voteCardPrefab);
+        voteObj.transform.position = transform.position + Vector3.down * 1f;
+        voteObj.GetComponent<Vote>().Initialize(vote == Disposition.Guilty);
+        Tween.Position(voteObj.transform, transform.position + Vector3.up * (2f + (votes.Count * 0.75f)), 0.2f, 0f, Tween.EaseOutStrong);
+        Tween.Rotate(voteObj.transform, new Vector3(0f, 0f, -3f + (Random.value * 6f)), Space.World, 0.25f, 0f, Tween.EaseOutStrong);
+        votes.Add(voteObj.GetComponent<Vote>());
+        yield return new WaitForSeconds(0.1f);
+    }
+
+    private IEnumerator PostVoteActionSequence(AfterVoteAction action, Disposition vote)
+    {
+        Card.SetActionBadgePulsing(true);
+        yield return new WaitForSeconds(0.5f);
+        switch (action)
         {
-            vote.Cleanup();
+            case AfterVoteAction.ChangeLeftToInnocent:
+                break;
+            case AfterVoteAction.ExtraVote:
+                yield return CastVote(vote);
+                break;
         }
-        votes.Clear();
+        yield return new WaitForSeconds(0.1f);
+        Card.SetActionBadgePulsing(false);
     }
 
     private Disposition DetermineUncertainVote()

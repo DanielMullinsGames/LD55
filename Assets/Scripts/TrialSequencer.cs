@@ -23,7 +23,7 @@ public class TrialSequencer : ManagedBehaviour
 
         foreach (var juror in bench.Jurors)
         {
-            yield return juror.Vote();
+            yield return juror.VoteSequence();
             yield return new WaitForSeconds(0.5f);
         }
 

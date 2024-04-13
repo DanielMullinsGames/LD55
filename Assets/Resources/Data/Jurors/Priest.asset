@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Priest
   m_EditorClassIdentifier: 
   nameText: Pastor
-  detailText: 'Action: Changes vote of left neighbour to Innocent'
-  disposition: 2
+  detailText: 'After Vote: Change vote of left neighbour to Innocent'
+  disposition: 1
+  decisionMethod: 0
+  afterVoteAction: 1
