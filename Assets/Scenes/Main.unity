@@ -595,6 +595,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 347916600}
     m_Modifications:
+    - target: {fileID: 2066569423664178817, guid: f46897c57d664314990c653f92b72455, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 86a9ebf8c9819964ca5318b101c91012, type: 2}
     - target: {fileID: 2066569423664178818, guid: f46897c57d664314990c653f92b72455, type: 3}
       propertyPath: m_Name
       value: Juror (4)
@@ -729,6 +733,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 347916600}
     m_Modifications:
+    - target: {fileID: 2066569423664178817, guid: f46897c57d664314990c653f92b72455, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b7e00a354dee2040a7c989a9e657d9b, type: 2}
     - target: {fileID: 2066569423664178818, guid: f46897c57d664314990c653f92b72455, type: 3}
       propertyPath: m_Name
       value: Juror (6)
@@ -786,6 +794,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 347916600}
     m_Modifications:
+    - target: {fileID: 2066569423664178817, guid: f46897c57d664314990c653f92b72455, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b7e00a354dee2040a7c989a9e657d9b, type: 2}
     - target: {fileID: 2066569423664178818, guid: f46897c57d664314990c653f92b72455, type: 3}
       propertyPath: m_Name
       value: Juror (2)
@@ -930,6 +942,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 347916600}
     m_Modifications:
+    - target: {fileID: 2066569423664178817, guid: f46897c57d664314990c653f92b72455, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: a941b1ef17e2f254c9a4c6a677328b32, type: 2}
     - target: {fileID: 2066569423664178818, guid: f46897c57d664314990c653f92b72455, type: 3}
       propertyPath: m_Name
       value: Juror (3)
@@ -987,6 +1003,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 347916600}
     m_Modifications:
+    - target: {fileID: 2066569423664178817, guid: f46897c57d664314990c653f92b72455, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: ccd7b3392c2fcec4faac689794b66f67, type: 2}
     - target: {fileID: 2066569423664178818, guid: f46897c57d664314990c653f92b72455, type: 3}
       propertyPath: m_Name
       value: Juror (1)
@@ -1314,6 +1334,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 347916600}
     m_Modifications:
+    - target: {fileID: 2066569423664178817, guid: f46897c57d664314990c653f92b72455, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: ccd7b3392c2fcec4faac689794b66f67, type: 2}
     - target: {fileID: 2066569423664178818, guid: f46897c57d664314990c653f92b72455, type: 3}
       propertyPath: m_Name
       value: Juror (5)
@@ -1524,6 +1548,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 347916600}
     m_Modifications:
+    - target: {fileID: 2066569423664178817, guid: f46897c57d664314990c653f92b72455, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 86a9ebf8c9819964ca5318b101c91012, type: 2}
     - target: {fileID: 2066569423664178818, guid: f46897c57d664314990c653f92b72455, type: 3}
       propertyPath: m_Name
       value: Juror

@@ -18,6 +18,17 @@ public class JurorCard : ManagedBehaviour
     [SerializeField]
     private TMPro.TextMeshPro detailText = default;
 
+    private void Start()
+    {
+        DisplayData(juror.Data);
+    }
+
+    public void DisplayData(JurorData data)
+    {
+        titleText.text = data.nameText;
+        detailText.text = data.detailText;
+    }
+
     public override void ManagedUpdate()
     {
         transform.position = new Vector2(juror.transform.position.x, transform.position.y);

@@ -5,8 +5,25 @@ using Sirenix.OdinInspector;
 
 public class JurorInteractable : DraggableInteractable
 {
-    public JurorAnimController Anim => anim;
+    public bool Benched { get; set; } = true; //<--
+
     [Title("Juror")]
+    public JurorData Data => data;
+    [SerializeField]
+    private JurorData data = default;
+
+    public JurorAnimController Anim => anim;
     [SerializeField]
     private JurorAnimController anim = default;
+
+    protected override void ManagedInitialize()
+    {
+        anim.SetDispositionShown(false, immediate: true);
+    }
+
+    public override void ManagedUpdate()
+    {
+        base.ManagedUpdate();
+        anim.SetDispositionShown(!BeingDragged && Benched);
+    }
 }
