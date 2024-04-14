@@ -26,6 +26,12 @@ public class MetaPhaseSequencer : ManagedBehaviour
     [SerializeField]
     private TMPro.TextMeshPro bonusPaymentText = default;
 
+    [SerializeField]
+    private TMPro.TextMeshPro defendantPowerText = default;
+
+    [SerializeField]
+    private GameObject mickeyHorsePrefab = default;
+
     private void Start()
     {
         transform.position = new Vector2(0f, 10f);
@@ -81,6 +87,33 @@ public class MetaPhaseSequencer : ManagedBehaviour
         AudioController.Instance.PlaySound2D("metal_tap");
         Tween.Position(transform, new Vector2(0f, 10f), 0.5f, 0f, Tween.EaseIn);
         yield return new WaitForSeconds(0.5f);
+        yield return JurorPowerSequence(index);
+    }
+
+    private IEnumerator JurorPowerSequence(int roundIndex)
+    {
+        // Booth
+        if (GameFlowManager.defendantIndex == 1)
+        {
+
+        }
+        // Mickey
+        if (GameFlowManager.defendantIndex == 2)
+        {
+            if (roundIndex > 0 && BenchArea.instance.Jurors.Count < 7)
+            {
+                defendantPowerText.gameObject.SetActive(true);
+                defendantPowerText.text = "DEFENDANT POWER: ALL ABOARD!";
+                AudioController.Instance.PlaySound2D("negate_1");
+                yield return new WaitForSeconds(1.5f);
+
+                AudioController.Instance.PlaySound2D("negate_1");
+                CamShake();
+                BenchArea.instance.SpawnJuror(mickeyHorsePrefab);
+                yield return new WaitForSeconds(1.5f);
+                defendantPowerText.gameObject.SetActive(false);
+            }
+        }
     }
 
     private void CamShake()
