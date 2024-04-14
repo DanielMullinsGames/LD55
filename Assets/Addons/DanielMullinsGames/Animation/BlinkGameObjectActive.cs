@@ -8,8 +8,16 @@ public class BlinkGameObjectActive : TimedBehaviour
     [SerializeField]
     private GameObject objectToBlink = default;
 
+    [SerializeField]
+    private string blinkSound = default;
+
     protected override void OnTimerReached()
     {
         objectToBlink.SetActive(!objectToBlink.activeSelf);
+
+        if (objectToBlink.activeSelf && !string.IsNullOrEmpty(blinkSound))
+        {
+            AudioController.Instance.PlaySound2D(blinkSound);
+        }
     }
 }

@@ -45,11 +45,13 @@ public class TrialSequencer : ManagedBehaviour
 
         Tween.Position(judgeStand, new Vector2(judgeStand.position.x, standOnScreenY), 3f, 0f, Tween.EaseOutStrong);
         Tween.Shake(cam.transform, new Vector3(0f, 0f, cam.transform.position.z), Vector2.one * 0.05f, 3f, 0f);
+        AudioController.Instance.PlaySound2D("weird_power", pitch: new AudioParams.Pitch(0.7f));
         yield return new WaitForSeconds(2.5f);
 
         Tween.Position(requirementTextParent, new Vector2(requirementTextParent.position.x, textOnScreenY), 1f, 0f, Tween.EaseOutStrong);
         yield return new WaitForSeconds(1f);
 
+        AudioController.Instance.PlaySound2D("judge_order");
         judgeAnim.SetTrigger("order");
         bench.Jurors.ForEach(x => x.SetCollisionEnabled(false));
         yield return new WaitForSeconds(2f);
@@ -88,6 +90,9 @@ public class TrialSequencer : ManagedBehaviour
         yield return new WaitForSeconds(0.9f);
         bool guilty = numVotes >= requiredVotes;
         PunchReqText(() => requirementText.text = guilty ? "GUILTY!" : "INNOCENT!");
+
+        AudioController.Instance.PlaySound2D(guilty ? "judge_guilty" : "judge_innocent");
+
         yield return new WaitForSeconds(1f);
 
         // TODO: defendant reaction
@@ -96,6 +101,7 @@ public class TrialSequencer : ManagedBehaviour
         Tween.Position(judgeStand, new Vector2(judgeStand.position.x, STAND_OFFSCREEN_Y), 2f, 0f, Tween.EaseIn);
         Tween.Shake(cam.transform, new Vector3(0f, 0f, cam.transform.position.z), Vector2.one * 0.03f, 2f, 0f);
         Tween.Position(requirementTextParent, new Vector2(requirementTextParent.position.x, REQ_TEXT_OFFSCREEN_Y), 1f, 0f, Tween.EaseIn);
+        AudioController.Instance.PlaySound2D("weird_power", pitch: new AudioParams.Pitch(0.8f));
         yield return new WaitForSeconds(2f);
 
         bench.Jurors.ForEach(x => x.OnTrialEnded());
@@ -104,6 +110,7 @@ public class TrialSequencer : ManagedBehaviour
 
     public void OnCameraShakeKeyframe()
     {
+        AudioController.Instance.PlaySound2D("gavel_hit", pitch: new AudioParams.Pitch(AudioParams.Pitch.Variation.VerySmall));
         Tween.Shake(cam.transform, new Vector3(0f, 0f, cam.transform.position.z), Vector2.one * 0.04f, 0.2f, 0f);
     }
 

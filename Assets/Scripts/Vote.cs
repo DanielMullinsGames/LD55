@@ -44,6 +44,7 @@ public class Vote : ManagedBehaviour
 
     public void ChangeVote(bool guilty)
     {
+        AudioController.Instance.PlaySound2D("paper_short", 1f, pitch: new AudioParams.Pitch(AudioParams.Pitch.Variation.VerySmall), repetition: new AudioParams.Repetition(0.05f));
         Tween.LocalScale(transform, new Vector2(0.25f, 1.25f), 0.1f, 0f, Tween.EaseIn, completeCallback: () =>
         {
             Initialize(guilty);
@@ -54,6 +55,9 @@ public class Vote : ManagedBehaviour
 
     public void Cleanup()
     {
+        AudioController.Instance.PlaySound2D("vote_crunch", 0.8f,
+            pitch: new AudioParams.Pitch(AudioParams.Pitch.Variation.VerySmall), repetition: new AudioParams.Repetition(0.05f));
+
         var crumpled = Instantiate(crumpledPrefab).transform;
         crumpled.position = transform.position;
         crumpled.eulerAngles = new Vector3(0f, 0f, Random.value * 360f);

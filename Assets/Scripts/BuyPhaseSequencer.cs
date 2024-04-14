@@ -60,6 +60,7 @@ public class BuyPhaseSequencer : ManagedBehaviour
         endedPhase = false;
         Tween.Shake(cam.transform, new Vector3(0f, 0f, cam.transform.position.z), Vector2.one * 0.04f, 1.5f, 0f);
         Tween.LocalPosition(uiParent, Vector2.zero, 1.5f, 0f, Tween.EaseOutStrong);
+        AudioController.Instance.PlaySound2D("weird_power");
         yield return new WaitForSeconds(1.5f);
         endPhaseButton.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.1f);
@@ -68,12 +69,14 @@ public class BuyPhaseSequencer : ManagedBehaviour
 
         yield return new WaitUntil(() => endedPhase);
         CamShake();
+        AudioController.Instance.PlaySound2D("horn_1");
         yield return new WaitForSeconds(0.1f);
         endPhaseButton.gameObject.SetActive(false);
         yield return ClearJurors();
         yield return new WaitForSeconds(0.2f);
         Tween.Shake(cam.transform, new Vector3(0f, 0f, cam.transform.position.z), Vector2.one * 0.04f, 1.5f, 0f);
         Tween.LocalPosition(uiParent, OFFSCREEN_UI_POS, 1.5f, 0f, Tween.EaseIn);
+        AudioController.Instance.PlaySound2D("weird_power", pitch: new AudioParams.Pitch(0.9f));
         yield return new WaitForSeconds(1.35f);
     }
 
@@ -96,6 +99,8 @@ public class BuyPhaseSequencer : ManagedBehaviour
             if (juror != null)
             {
                 Tween.Position(juror.transform, juror.transform.position + Vector3.left * 10f, 0.5f, 0f, Tween.EaseIn);
+                AudioController.Instance.PlaySound2D("whoosh", 
+                    pitch: new AudioParams.Pitch(AudioParams.Pitch.Variation.Small), repetition: new AudioParams.Repetition(0.05f));
                 Destroy(juror.gameObject, 0.5f);
                 yield return new WaitForSeconds(0.05f);
             }
@@ -136,6 +141,7 @@ public class BuyPhaseSequencer : ManagedBehaviour
         Vector2 destination = leftAnchor + Vector2.right * jurorSpacing * index;
         jurorObj.transform.position = destination + Vector2.right * 10f;
         Tween.Position(jurorObj.transform, destination, 1f, 0f, Tween.EaseOutStrong);
+        AudioController.Instance.PlaySound2D("whoosh", pitch: new AudioParams.Pitch(AudioParams.Pitch.Variation.Small));
 
         var juror = jurorObj.GetComponent<JurorInteractable>();
         juror.ConfigureForBuyPhase(OnJurorBuyButtonPressed);

@@ -8,6 +8,7 @@ public class StartScreen : ManagedBehaviour
     {
         if (Time.timeSinceLevelLoad > 1f && Input.anyKeyDown || Input.GetMouseButton(0))
         {
+            AudioController.Instance.PlaySound2D("horn_1");
             enabled = false;
             SceneTransition.instance.Transition(false);
             CustomCoroutine.WaitThenExecute(0.6f, () =>

@@ -615,6 +615,7 @@ MonoBehaviour:
   originalFrequency: 0.25
   volatility: 0
   objectToBlink: {fileID: 6522045915096796087}
+  blinkSound: metal_tap
 --- !u!1 &8786949852847724119
 GameObject:
   m_ObjectHideFlags: 0

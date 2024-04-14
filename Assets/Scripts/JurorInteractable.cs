@@ -127,6 +127,8 @@ public class JurorInteractable : DraggableInteractable
 
     private IEnumerator CastVote(Disposition vote)
     {
+        AudioController.Instance.PlaySound2D("paper_short", 1f, pitch: new AudioParams.Pitch(AudioParams.Pitch.Variation.VerySmall), repetition: new AudioParams.Repetition(0.05f));
+
         var voteObj = Instantiate(voteCardPrefab);
         voteObj.transform.position = transform.position + Vector3.down * 1f;
         voteObj.GetComponent<Vote>().Initialize(vote == Disposition.Guilty);

@@ -48,6 +48,7 @@ public class MetaPhaseSequencer : ManagedBehaviour
 
         transform.position = new Vector2(0f, 10f);
         Tween.Position(transform, new Vector2(0f, 2f), 1f, 0f, Tween.EaseOutStrong);
+        AudioController.Instance.PlaySound2D("whoosh", pitch: new AudioParams.Pitch(0.8f));
         yield return new WaitForSeconds(1f);
 
         if (index > 0)
@@ -77,12 +78,14 @@ public class MetaPhaseSequencer : ManagedBehaviour
         yield return new WaitForSeconds(2f);
         blinkers[index].enabled = false;
         trialTexts[index].gameObject.SetActive(true);
+        AudioController.Instance.PlaySound2D("metal_tap");
         Tween.Position(transform, new Vector2(0f, 10f), 0.5f, 0f, Tween.EaseIn);
         yield return new WaitForSeconds(0.5f);
     }
 
     private void CamShake()
     {
+        AudioController.Instance.PlaySound2D("negate_4");
         Tween.Shake(cam.transform, new Vector3(0f, 0f, cam.transform.position.z), Vector2.one * 0.04f, 0.2f, 0f);
     }
 }
