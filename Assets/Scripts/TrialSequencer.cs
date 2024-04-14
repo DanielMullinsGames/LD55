@@ -25,7 +25,7 @@ public class TrialSequencer : ManagedBehaviour
 
     private const float REQ_TEXT_OFFSCREEN_Y = 6f;
     private float textOnScreenY;
-    private const float STAND_OFFSCREEN_Y = -5f;
+    private const float STAND_OFFSCREEN_Y = -7f;
     private float standOnScreenY;
 
     private void Start()
