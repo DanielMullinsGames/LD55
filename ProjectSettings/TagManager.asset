@@ -56,3 +56,6 @@ TagManager:
   - name: Cursor
     uniqueID: 3167293937
     locked: 0
+  - name: Transition
+    uniqueID: 1834608841
+    locked: 0
