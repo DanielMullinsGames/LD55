@@ -22,6 +22,8 @@ public class SellArea : ManagedBehaviour
         Destroy(juror.gameObject);
         CamShake();
         CashManager.instance.AdjustCash(1);
+        AudioController.Instance.PlaySound2D("juror_die", 0.5f);
+        AudioController.Instance.PlaySound2D("negate_3");
     }
 
     private void CamShake()

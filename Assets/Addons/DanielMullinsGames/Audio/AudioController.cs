@@ -89,8 +89,8 @@ public class AudioController : MonoBehaviour
         if (source != null)
         {
             source.spatialBlend = 0f;
+            DontDestroyOnLoad(source.gameObject);
         }
-        DontDestroyOnLoad(source.gameObject);
 
         return source;
     }

@@ -111,6 +111,7 @@ public class BuyPhaseSequencer : ManagedBehaviour
 
     private void OnRerollPressed()
     {
+        AudioController.Instance.PlaySound2D("negate_4");
         if (CashManager.instance.Cash >= 1)
         {
             StartCoroutine(RerollSequence());
@@ -160,11 +161,13 @@ public class BuyPhaseSequencer : ManagedBehaviour
     {
         if (BenchArea.instance.Jurors.Count >= 7)
         {
+            AudioController.Instance.PlaySound2D("negate_1");
             CamShake();
             CustomCoroutine.FlickerSequence(() => fullBenchText.SetActive(true), () => fullBenchText.SetActive(false), true, false, 0.1f, 3);
         }
         else if (CashManager.instance.Cash >= juror.Data.cost)
         {
+            AudioController.Instance.PlaySound2D("negate_4");
             int index = buyableJurors.IndexOf(juror);
 
             buyableJurors[index].gameObject.SetActive(false);
@@ -177,6 +180,7 @@ public class BuyPhaseSequencer : ManagedBehaviour
         }
         else
         {
+            AudioController.Instance.PlaySound2D("negate_1");
             CamShake();
             CashManager.instance.BlinkCash();
         }

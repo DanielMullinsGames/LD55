@@ -12,6 +12,9 @@ public class JurorAnimController : ManagedBehaviour
     [SerializeField]
     private Animator anim = default;
 
+    [SerializeField]
+    private AudioSource holdingAudioSource = default;
+
     public UnityEngine.Rendering.SortingGroup SortingGroup => sortingGroup;
     [SerializeField]
     private UnityEngine.Rendering.SortingGroup sortingGroup;
@@ -59,6 +62,7 @@ public class JurorAnimController : ManagedBehaviour
     {
         anim.SetBool("dragging", draggable.BeingDragged);
         sortingGroup.sortingLayerName = draggable.BeingDragged ? "Cursor" : "Default";
+        holdingAudioSource.enabled = draggable.BeingDragged;
     }
 
     public void SetHandsShown(bool shown)
