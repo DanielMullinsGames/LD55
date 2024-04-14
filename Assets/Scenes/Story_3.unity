@@ -387,7 +387,7 @@ PrefabInstance:
       objectReference: {fileID: 589250176}
     - target: {fileID: 3801475034714923451, guid: 35370ae6450e0034291d4b2f1cb5ace1, type: 3}
       propertyPath: lines.Array.size
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3801475034714923451, guid: 35370ae6450e0034291d4b2f1cb5ace1, type: 3}
       propertyPath: lines.Array.data[0]
@@ -411,10 +411,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3801475034714923451, guid: 35370ae6450e0034291d4b2f1cb5ace1, type: 3}
       propertyPath: lines.Array.data[5]
-      value: Guy is so well connected that he picks his own jurors.
+      value: Remember, I've got dirt on you.
       objectReference: {fileID: 0}
     - target: {fileID: 3801475034714923451, guid: 35370ae6450e0034291d4b2f1cb5ace1, type: 3}
       propertyPath: lines.Array.data[6]
+      value: There's no running.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801475034714923451, guid: 35370ae6450e0034291d4b2f1cb5ace1, type: 3}
+      propertyPath: lines.Array.data[7]
+      value: Anyways, guy is so well connected that he picks his own jurors.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801475034714923451, guid: 35370ae6450e0034291d4b2f1cb5ace1, type: 3}
+      propertyPath: lines.Array.data[8]
       value: You can't sell em either. Good luck, Pete.
       objectReference: {fileID: 0}
     - target: {fileID: 7054253297960612845, guid: 35370ae6450e0034291d4b2f1cb5ace1, type: 3}
