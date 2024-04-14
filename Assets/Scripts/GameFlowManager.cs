@@ -53,6 +53,9 @@ public class GameFlowManager : ManagedBehaviour
     private List<Defendant> defendants = new();
     public static int defendantIndex = 0;
 
+    [Header("DEBUG")]
+    public int debugDefendantIndex = 0;
+
     private readonly string[] PHASE_TRIAL_NAMES = new string[]
     {
         "mock trial #1",
@@ -65,6 +68,13 @@ public class GameFlowManager : ManagedBehaviour
     protected override void ManagedInitialize()
     {
         instance = this;
+
+#if UNITY_EDITOR
+        if (Time.realtimeSinceStartup < 5f)
+        {
+            defendantIndex = debugDefendantIndex;
+        }
+#endif
     }
 
     private void Start()
@@ -148,6 +158,12 @@ public class GameFlowManager : ManagedBehaviour
         else
         {
             ShowDefendantFear(false);
+            yield return new WaitForSeconds(1.5f);
+            finalVerdictText.text = "GAME OVER. CLICK TO RESTART TRIAL.";
+            AudioController.Instance.PlaySound2D("horn_1");
+            yield return new WaitForSeconds(0.25f);
+            yield return new WaitUntil(() => Input.GetMouseButton(0));
+            AudioController.Instance.PlaySound2D("whoosh");
             SceneTransition.instance.Transition(false);
             yield return new WaitForSeconds(0.6f);
         }
