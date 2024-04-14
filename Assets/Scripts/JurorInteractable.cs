@@ -117,6 +117,14 @@ public class JurorInteractable : DraggableInteractable
         }
     }
 
+    protected override void OnDragEnd()
+    {
+        if (GetComponent<Collider2D>().bounds.Intersects(SellArea.instance.Bounds))
+        {
+            SellArea.instance.SellJuror(this);
+        }
+    }
+
     private IEnumerator CastVote(Disposition vote)
     {
         var voteObj = Instantiate(voteCardPrefab);

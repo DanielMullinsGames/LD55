@@ -45,6 +45,7 @@ public class BenchArea : ManagedBehaviour
 
     public override void ManagedUpdate()
     {
+        jurorsOnBench.RemoveAll(x => x == null || ReferenceEquals(x, null));
         if (DraggableInteractable.CurrentDraggable is JurorInteractable draggingJuror)
         {
             UpdateJurorOrder(draggingJuror);

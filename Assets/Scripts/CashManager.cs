@@ -19,6 +19,16 @@ public class CashManager : ManagedBehaviour
         instance = this;
     }
 
+    public override void ManagedUpdate()
+    {
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            AdjustCash(1);
+        }
+#endif
+    }
+
     public void AdjustCash(int amount)
     {
         Cash = Mathf.Max(0, Cash + amount);

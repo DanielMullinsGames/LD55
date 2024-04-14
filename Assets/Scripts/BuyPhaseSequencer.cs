@@ -38,15 +38,21 @@ public class BuyPhaseSequencer : ManagedBehaviour
     private List<JurorInteractable> buyableJurors = new();
     private List<JurorCard> buyableJurorCards = new();
 
+    private readonly Vector2 OFFSCREEN_UI_POS = new Vector2(0f, -10f);
+
     private void Start()
     {
         endPhaseButton.CursorSelectStarted += (Interactable i) => endedPhase = true;
         rerollButton.CursorSelectStarted += (Interactable i) => OnRerollPressed();
+        uiParent.transform.localPosition = OFFSCREEN_UI_POS;
     }
 
     public IEnumerator BuySequence()
     {
         endedPhase = false;
+        Tween.Shake(cam.transform, new Vector3(0f, 0f, cam.transform.position.z), Vector2.one * 0.04f, 1.5f, 0f);
+        Tween.LocalPosition(uiParent, Vector2.zero, 1.5f, 0f, Tween.EaseOutStrong);
+        yield return new WaitForSeconds(1.6f);
 
         yield return SpawnJurors();
         CashManager.instance.AdjustCash(income);
@@ -55,6 +61,10 @@ public class BuyPhaseSequencer : ManagedBehaviour
         CamShake();
         yield return new WaitForSeconds(0.1f);
         yield return ClearJurors();
+        yield return new WaitForSeconds(0.2f);
+        Tween.Shake(cam.transform, new Vector3(0f, 0f, cam.transform.position.z), Vector2.one * 0.04f, 1.5f, 0f);
+        Tween.LocalPosition(uiParent, OFFSCREEN_UI_POS, 1.5f, 0f, Tween.EaseIn);
+        yield return new WaitForSeconds(1.35f);
     }
 
     private IEnumerator SpawnJurors()
@@ -76,7 +86,7 @@ public class BuyPhaseSequencer : ManagedBehaviour
             if (juror != null)
             {
                 Tween.Position(juror.transform, juror.transform.position + Vector3.left * 10f, 0.5f, 0f, Tween.EaseIn);
-                Destroy(juror.gameObject, 1f);
+                Destroy(juror.gameObject, 0.5f);
                 yield return new WaitForSeconds(0.05f);
             }
         }
