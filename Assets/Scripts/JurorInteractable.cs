@@ -37,6 +37,9 @@ public class JurorInteractable : DraggableInteractable
     [SerializeField]
     private GameObject voteCardPrefab = default;
 
+    [SerializeField]
+    private Interactable buyButton = default;
+
     private List<Vote> votes = new();
 
     private Disposition disposition = Disposition.Uncertain;
@@ -53,6 +56,21 @@ public class JurorInteractable : DraggableInteractable
         base.ManagedUpdate();
         anim.SetDispositionShown(!BeingDragged && Benched && !voted);
         anim.ShowDispositionType(disposition);
+    }
+
+    public void ConfigureForBuyPhase(System.Action<JurorInteractable> buyCallback)
+    {
+        enabled = false;
+        anim.enabled = false;
+        anim.SetDispositionShown(false);
+        anim.SetHandsShown(false);
+        anim.SortingGroup.sortingLayerName = "Foreground";
+        anim.SortingGroup.sortingOrder = 5;
+
+        buyButton.gameObject.SetActive(true);
+        buyButton.CursorSelectStarted += (Interactable i) => buyCallback?.Invoke(this);
+
+        SetCollisionEnabled(false);
     }
 
     public void OnTrialEnded()

@@ -15,3 +15,5 @@ MonoBehaviour:
   nameText: Sadist
   detailText: Votes guilty no matter what
   disposition: 1
+  decisionMethod: 0
+  afterVoteAction: 0

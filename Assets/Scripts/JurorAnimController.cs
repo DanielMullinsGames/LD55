@@ -16,6 +16,12 @@ public class JurorAnimController : ManagedBehaviour
     [SerializeField]
     private UnityEngine.Rendering.SortingGroup sortingGroup;
 
+    [SerializeField]
+    private GameObject leftHand = default;
+
+    [SerializeField]
+    private GameObject rightHand = default;
+
     [Title("Disposition Bubble")]
     [SerializeField]
     private Transform topBubble = default;
@@ -53,6 +59,12 @@ public class JurorAnimController : ManagedBehaviour
     {
         anim.SetBool("dragging", draggable.BeingDragged);
         sortingGroup.sortingLayerName = draggable.BeingDragged ? "Cursor" : "Default";
+    }
+
+    public void SetHandsShown(bool shown)
+    {
+        leftHand.SetActive(shown);
+        rightHand.SetActive(shown);
     }
 
     public void SetTrigger(string trigger)

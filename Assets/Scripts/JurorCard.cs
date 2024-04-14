@@ -8,6 +8,9 @@ public class JurorCard : ManagedBehaviour
     public JurorInteractable juror = default;
 
     [SerializeField]
+    private bool isBuyPhase = default;
+
+    [SerializeField]
     private float xExtent = default;
 
     [SerializeField]
@@ -31,8 +34,17 @@ public class JurorCard : ManagedBehaviour
     public void DisplayData(JurorData data)
     {
         titleText.text = data.nameText;
-        detailText.text = data.detailText;
-        actionBadge.gameObject.SetActive(data.afterVoteAction != AfterVoteAction.None);
+        string fullDetails = "";
+        if (isBuyPhase)
+        {
+            if (data.disposition == Disposition.Guilty || data.disposition == Disposition.Innocent)
+            {
+                fullDetails += "Default: " + data.disposition.ToString() + "\n\n";
+            }
+        }
+        fullDetails += data.detailText;
+        detailText.text = fullDetails;
+        actionBadge.gameObject.SetActive(data.afterVoteAction != AfterVoteAction.None && !isBuyPhase);
     }
 
     public void SetActionBadgePulsing(bool pulsing)
