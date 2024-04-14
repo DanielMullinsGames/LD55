@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b01896d1bb690344b18a72e37d15ece, type: 3}
   m_Name: Rare_Jockey
   m_EditorClassIdentifier: 
-  cost: 4
+  rare: 1
   nameText: Jockey
   detailText: 'After Vote: All jurors to the left do "After Vote" again'
   disposition: 2

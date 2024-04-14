@@ -12,6 +12,12 @@ public class BuyPhaseSequencer : ManagedBehaviour
     private List<GameObject> jurorPrefabPool = default;
 
     [SerializeField]
+    private List<GameObject> rareJurorPrefabPool = default;
+
+    [SerializeField]
+    private List<GameObject> postTutorialPool = default;
+
+    [SerializeField]
     private GameObject tutorialJuror = default;
 
     [Header("MISC")]
@@ -136,10 +142,27 @@ public class BuyPhaseSequencer : ManagedBehaviour
         else
         {
             var remainingPool = new List<GameObject>(jurorPrefabPool);
+            if (GameFlowManager.defendantIndex > 0)
+            {
+                remainingPool.AddRange(postTutorialPool);
+            }
+
+            var rarePool = new List<GameObject>(rareJurorPrefabPool);
+
             for (int i = 0; i < 3; i++)
             {
-                var random = remainingPool[Random.Range(0, remainingPool.Count)];
-                remainingPool.Remove(random);
+                GameObject random = null;
+                if (Random.value > 0.9f && GameFlowManager.defendantIndex > 0)
+                {
+                    random = rarePool[Random.Range(0, rarePool.Count)];
+                    rarePool.Remove(random);
+                }
+                else
+                {
+                    random = remainingPool[Random.Range(0, remainingPool.Count)];
+                    remainingPool.Remove(random);
+                }
+
                 SpawnJuror(random, i);
                 yield return new WaitForSeconds(0.25f);
             }

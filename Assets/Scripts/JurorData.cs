@@ -39,7 +39,8 @@ public enum SpecialTrait
 [CreateAssetMenu(fileName = "JurorData", menuName = "JurorData", order = 1)]
 public class JurorData : ScriptableObject
 {
-    public int cost = 2;
+    public bool rare;
+    public int cost => rare ? 3 : 2;
     public string nameText;
     [TextArea]
     public string detailText;

@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b01896d1bb690344b18a72e37d15ece, type: 3}
   m_Name: Rare_Slime
   m_EditorClassIdentifier: 
-  cost: 4
+  rare: 1
   nameText: Morph Slime
   detailText: When Summoned, turn into a copy of the left-most juror
   disposition: 3
   decisionMethod: 0
   afterVoteAction: 0
+  special: 0

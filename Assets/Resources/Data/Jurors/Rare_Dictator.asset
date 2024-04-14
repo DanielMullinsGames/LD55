@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b01896d1bb690344b18a72e37d15ece, type: 3}
   m_Name: Rare_Dictator
   m_EditorClassIdentifier: 
-  cost: 4
+  rare: 1
   nameText: Dictator
   detailText: 'After Vote: All jurors to the left reverse their vote'
   disposition: 1
   decisionMethod: 0
   afterVoteAction: 4
+  special: 0

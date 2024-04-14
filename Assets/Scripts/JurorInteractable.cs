@@ -40,6 +40,12 @@ public class JurorInteractable : DraggableInteractable
     [SerializeField]
     private Interactable buyButton = default;
 
+    [SerializeField]
+    private TMPro.TextMeshPro buyButtonText = default;
+
+    [SerializeField]
+    private GameObject rareSparkles = default;
+
     private List<Vote> votes = new();
 
     private Disposition disposition = Disposition.Uncertain;
@@ -67,10 +73,16 @@ public class JurorInteractable : DraggableInteractable
         anim.SortingGroup.sortingLayerName = "Foreground";
         anim.SortingGroup.sortingOrder = 5;
 
+        buyButtonText.text = "summon $" + Data.cost;
         buyButton.gameObject.SetActive(true);
         buyButton.CursorSelectStarted += (Interactable i) => buyCallback?.Invoke(this);
 
         SetCollisionEnabled(false);
+
+        if (Data.rare)
+        {
+            rareSparkles.SetActive(true);
+        }
     }
 
     public void OnTrialEnded()
