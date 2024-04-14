@@ -23,6 +23,7 @@ public class JurorInteractable : DraggableInteractable
             }
         }
     }
+    public int NumVotes => votes.Count;
 
     [Title("Juror")]
     public JurorData Data => data;
@@ -57,6 +58,7 @@ public class JurorInteractable : DraggableInteractable
     public void OnTrialEnded()
     {
         voted = false;
+        SetCollisionEnabled(true);
     }
 
     public void CleanupVotes()
