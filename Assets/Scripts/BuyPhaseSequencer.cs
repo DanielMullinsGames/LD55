@@ -7,9 +7,14 @@ public class BuyPhaseSequencer : ManagedBehaviour
 {
     private bool endedPhase = false;
 
+    [Header("JURORS")]
     [SerializeField]
     private List<GameObject> jurorPrefabPool = default;
 
+    [SerializeField]
+    private GameObject tutorialJuror = default;
+
+    [Header("MISC")]
     [SerializeField]
     private GameObject jurorCardPrefab = default;
 
@@ -53,8 +58,14 @@ public class BuyPhaseSequencer : ManagedBehaviour
         endPhaseButton.gameObject.SetActive(false);
     }
 
-    public IEnumerator BuySequence(int guiltNeeded, string trialName)
+    public IEnumerator BuySequence(int trialIndex, int guiltNeeded, string trialName)
     {
+        bool tutorial1 = GameFlowManager.defendantIndex == 0 && trialIndex == 0;
+        bool tutorial2 = GameFlowManager.defendantIndex == 0 && trialIndex == 1;
+        bool tutorial3 = GameFlowManager.defendantIndex == 0 && trialIndex == 2;
+        rerollButton.gameObject.SetActive(!tutorial1 && !tutorial2);
+        SellArea.instance.gameObject.SetActive(!tutorial1 && !tutorial2);
+
         trialDetailText.text = trialName + "\n" + guiltNeeded + " guilty votes needed";
 
         endedPhase = false;
@@ -62,12 +73,47 @@ public class BuyPhaseSequencer : ManagedBehaviour
         Tween.LocalPosition(uiParent, Vector2.zero, 1.5f, 0f, Tween.EaseOutStrong);
         AudioController.Instance.PlaySound2D("weird_power");
         yield return new WaitForSeconds(1.5f);
-        endPhaseButton.gameObject.SetActive(true);
+        endPhaseButton.gameObject.SetActive(!tutorial1 && !tutorial2);
         yield return new WaitForSeconds(0.1f);
 
-        yield return SpawnJurors();
+        yield return SpawnJurors(tutorial1);
+
+        if (tutorial1)
+        {
+            // Buy juror
+            TutorialManager.instance.ShowTutorial(0);
+            yield return new WaitUntil(() => BenchArea.instance.Jurors.Count > 0);
+            TutorialManager.instance.HideCurrentTutorial();
+
+            // End turn
+            yield return new WaitForSeconds(0.5f);
+            TutorialManager.instance.ShowTutorial(1);
+            endPhaseButton.gameObject.SetActive(true);
+        }
+        else if (tutorial2)
+        {
+            // Buy 2nd juror
+            TutorialManager.instance.ShowTutorial(2);
+            yield return new WaitUntil(() => BenchArea.instance.Jurors.Count > 1);
+            TutorialManager.instance.HideCurrentTutorial();
+
+            // Rearrange tutorial
+            yield return new WaitForSeconds(0.5f);
+            TutorialManager.instance.ShowTutorial(3);
+            var firstJuror = BenchArea.instance.Jurors[0];
+            yield return new WaitUntil(() => firstJuror != BenchArea.instance.Jurors[0]);
+
+            endPhaseButton.gameObject.SetActive(true);
+            TutorialManager.instance.HideCurrentTutorial();
+        }
+        else if (tutorial3)
+        {
+            // reroll + sell hints
+            TutorialManager.instance.ShowTutorial(4);
+        }
 
         yield return new WaitUntil(() => endedPhase);
+        TutorialManager.instance.HideCurrentTutorial();
         CamShake();
         AudioController.Instance.PlaySound2D("horn_1");
         yield return new WaitForSeconds(0.1f);
@@ -80,15 +126,22 @@ public class BuyPhaseSequencer : ManagedBehaviour
         yield return new WaitForSeconds(1.35f);
     }
 
-    private IEnumerator SpawnJurors()
+    private IEnumerator SpawnJurors(bool tutorial = false)
     {
-        var remainingPool = new List<GameObject>(jurorPrefabPool);
-        for (int i = 0; i < 3; i++)
+        if (tutorial)
         {
-            var random = remainingPool[Random.Range(0, remainingPool.Count)];
-            remainingPool.Remove(random);
-            SpawnJuror(random, i);
-            yield return new WaitForSeconds(0.25f);
+            SpawnJuror(tutorialJuror, 1);
+        }
+        else
+        {
+            var remainingPool = new List<GameObject>(jurorPrefabPool);
+            for (int i = 0; i < 3; i++)
+            {
+                var random = remainingPool[Random.Range(0, remainingPool.Count)];
+                remainingPool.Remove(random);
+                SpawnJuror(random, i);
+                yield return new WaitForSeconds(0.25f);
+            }
         }
     }
 

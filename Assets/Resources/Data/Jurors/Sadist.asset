@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b01896d1bb690344b18a72e37d15ece, type: 3}
   m_Name: Sadist
   m_EditorClassIdentifier: 
-  cost: 3
+  cost: 2
   nameText: Sadist
   detailText: Votes guilty no matter what
   disposition: 1

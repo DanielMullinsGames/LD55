@@ -119,7 +119,7 @@ public class JurorInteractable : DraggableInteractable
 
     protected override void OnDragEnd()
     {
-        if (GetComponent<Collider2D>().bounds.Intersects(SellArea.instance.Bounds))
+        if (SellArea.instance.gameObject.activeInHierarchy && GetComponent<Collider2D>().bounds.Intersects(SellArea.instance.Bounds))
         {
             SellArea.instance.SellJuror(this);
         }

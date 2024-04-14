@@ -185,9 +185,8 @@ public class GameFlowManager : ManagedBehaviour
             Tween.Position(benchParent, buyPhaseBenchPos, 0.25f, 0f, Tween.EaseInOut);
             AudioController.Instance.PlaySound2D("whoosh", pitch: new AudioParams.Pitch(0.5f));
             yield return new WaitForSeconds(0.35f);
-            yield return buyPhaseSequencer.BuySequence(guiltReqs[i], PHASE_TRIAL_NAMES[i]);
+            yield return buyPhaseSequencer.BuySequence(i, guiltReqs[i], PHASE_TRIAL_NAMES[i]);
             yield return new WaitForSeconds(0.1f);
-
             
             Tween.Position(benchParent, trialPhaseBenchPos, 0.25f, 0f, Tween.EaseInOut);
             AudioController.Instance.PlaySound2D("whoosh", pitch: new AudioParams.Pitch(0.5f));
