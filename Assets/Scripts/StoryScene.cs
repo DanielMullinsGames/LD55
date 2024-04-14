@@ -13,6 +13,7 @@ public class StoryScene : ManagedBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1f;
         StartCoroutine(StorySequence());
         text.gameObject.SetActive(false);
     }

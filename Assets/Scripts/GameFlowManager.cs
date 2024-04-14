@@ -90,20 +90,6 @@ public class GameFlowManager : ManagedBehaviour
         defendants[defendantIndex].anim.SetBool("fear", fear);
     }
 
-    public override void ManagedUpdate()
-    {
-#if UNITY_EDITOR
-        if (Input.GetKey(KeyCode.Space))
-        {
-            Time.timeScale = 5f;
-        }
-        else
-        {
-            Time.timeScale = 1f;
-        }
-#endif
-    }
-
     private IEnumerator GameSequence()
     {
         yield return DefendantIntroSequence();
