@@ -57,10 +57,11 @@ public class GameFlowManager : ManagedBehaviour
     private IEnumerator DefendantSequence()
     {
         int numRounds = 5;
+        bool trialSucceeded = false;
         for (int i = 0; i < numRounds; i++)
         {
             benchParent.transform.position = trialPhaseBenchPos;
-            yield return metaPhaseSequencer.MetaPhase(i, PHASE_GUILT_REQUIREMENTS, PHASE_TRIAL_NAMES);
+            yield return metaPhaseSequencer.MetaPhase(i, PHASE_GUILT_REQUIREMENTS, PHASE_TRIAL_NAMES, trialSucceeded);
             yield return new WaitForSeconds(0.1f);
 
             Tween.Position(benchParent, buyPhaseBenchPos, 0.25f, 0f, Tween.EaseInOut);
@@ -68,7 +69,7 @@ public class GameFlowManager : ManagedBehaviour
             yield return buyPhaseSequencer.BuySequence(PHASE_GUILT_REQUIREMENTS[i], PHASE_TRIAL_NAMES[i]);
             yield return new WaitForSeconds(0.1f);
 
-            bool trialSucceeded = false;
+            
             Tween.Position(benchParent, trialPhaseBenchPos, 0.25f, 0f, Tween.EaseInOut);
             yield return new WaitForSeconds(0.35f);
             yield return trialSequencer.TrialSequence(PHASE_GUILT_REQUIREMENTS[i], (bool succeeded) => trialSucceeded = succeeded);

@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0016, y: -0.021}
-  m_SizeDelta: {x: 1.0564, y: 0.3018}
+  m_AnchoredPosition: {x: -0, y: -0.021}
+  m_SizeDelta: {x: 0.9174, y: 0.3018}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &3036288494635877659
 MeshRenderer:
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'BUY: $2'
+  m_text: summon $2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0a57a62a534565645ba4d0511b64c648, type: 2}
   m_sharedMaterial: {fileID: 2033745107910324455, guid: 0a57a62a534565645ba4d0511b64c648, type: 2}
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 3
+  m_fontSize: 2.1
   m_fontSizeBase: 7
   m_fontWeight: 400
   m_enableAutoSizing: 1

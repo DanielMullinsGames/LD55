@@ -90,7 +90,7 @@ public class TrialSequencer : ManagedBehaviour
         PunchReqText(() => requirementText.text = guilty ? "GUILTY!" : "INNOCENT!");
         yield return new WaitForSeconds(1f);
 
-        // TODO: show defendant... killed?
+        // TODO: defendant reaction
 
         // Cleanup
         Tween.Position(judgeStand, new Vector2(judgeStand.position.x, STAND_OFFSCREEN_Y), 2f, 0f, Tween.EaseIn);
@@ -99,6 +99,7 @@ public class TrialSequencer : ManagedBehaviour
         yield return new WaitForSeconds(2f);
 
         bench.Jurors.ForEach(x => x.OnTrialEnded());
+        completedCallback?.Invoke(guilty);
     }
 
     public void OnCameraShakeKeyframe()

@@ -5,7 +5,6 @@ using Pixelplacement;
 
 public class BuyPhaseSequencer : ManagedBehaviour
 {
-    private int income = 3;
     private bool endedPhase = false;
 
     [SerializeField]
@@ -66,7 +65,6 @@ public class BuyPhaseSequencer : ManagedBehaviour
         yield return new WaitForSeconds(0.1f);
 
         yield return SpawnJurors();
-        CashManager.instance.AdjustCash(income);
 
         yield return new WaitUntil(() => endedPhase);
         CamShake();

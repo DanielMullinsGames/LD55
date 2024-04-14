@@ -17,6 +17,7 @@ public class CashManager : ManagedBehaviour
     protected override void ManagedInitialize()
     {
         instance = this;
+        AdjustCash(3);
     }
 
     public override void ManagedUpdate()
