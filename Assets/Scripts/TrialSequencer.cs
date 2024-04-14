@@ -89,13 +89,22 @@ public class TrialSequencer : ManagedBehaviour
         judgeAnim.SetTrigger("verdict");
         yield return new WaitForSeconds(0.9f);
         bool guilty = numVotes >= requiredVotes;
+#if UNITY_EDITOR
+        if (Input.GetKey(KeyCode.BackQuote))
+        {
+            guilty = true;
+        }
+#endif
         PunchReqText(() => requirementText.text = guilty ? "GUILTY!" : "INNOCENT!");
 
         AudioController.Instance.PlaySound2D(guilty ? "judge_guilty" : "judge_innocent");
 
         yield return new WaitForSeconds(1f);
 
-        // TODO: defendant reaction
+        if (guilty)
+        {
+            GameFlowManager.instance.ShowDefendantFear(true);
+        }
 
         // Cleanup
         Tween.Position(judgeStand, new Vector2(judgeStand.position.x, STAND_OFFSCREEN_Y), 2f, 0f, Tween.EaseIn);
@@ -105,6 +114,7 @@ public class TrialSequencer : ManagedBehaviour
         yield return new WaitForSeconds(2f);
 
         bench.Jurors.ForEach(x => x.OnTrialEnded());
+        GameFlowManager.instance.ShowDefendantFear(false);
         completedCallback?.Invoke(guilty);
     }
 

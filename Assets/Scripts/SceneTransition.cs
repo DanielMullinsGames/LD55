@@ -15,6 +15,11 @@ public class SceneTransition : ManagedBehaviour
         Transition(true);
     }
 
+    public void BlackOut()
+    {
+        mask.alphaCutoff = 1f;
+    }
+
     public void Transition(bool transitionIn)
     {
         StopAllCoroutines();

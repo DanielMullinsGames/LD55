@@ -45,6 +45,9 @@ public class GameFlowManager : ManagedBehaviour
     [SerializeField]
     private TMPro.TextMeshPro finalVerdictText = default;
 
+    [SerializeField]
+    private Transform crossHairs = default;
+
     [Header("DEFENDANTS")]
     [SerializeField]
     private List<Defendant> defendants = new();
@@ -73,6 +76,20 @@ public class GameFlowManager : ManagedBehaviour
     public void ShowDefendantFear(bool fear)
     {
         defendants[defendantIndex].anim.SetBool("fear", fear);
+    }
+
+    public override void ManagedUpdate()
+    {
+#if UNITY_EDITOR
+        if (Input.GetKey(KeyCode.Space))
+        {
+            Time.timeScale = 5f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
+#endif
     }
 
     private IEnumerator GameSequence()
@@ -107,6 +124,37 @@ public class GameFlowManager : ManagedBehaviour
         AudioController.Instance.PlaySound2D("horn_1");
     }
 
+    private IEnumerator SentencingSequence(bool guilty)
+    {
+        AudioController.Instance.PlaySound2D("whoosh");
+        Tween.Position(defendantStand, new Vector2(0f, trialDefendantPos.y), 1f, 0f, Tween.EaseOutStrong);
+        ShowDefendantFear(true);
+        yield return new WaitForSeconds(2f);
+
+        finalVerdictText.gameObject.SetActive(true);
+        finalVerdictText.text = "FINAL VERDICT: " + (guilty ? "GUILTY!" : "INNOCENT!");
+        AudioController.Instance.PlaySound2D("horn_1");
+        if (guilty)
+        {
+            crossHairs.gameObject.SetActive(true);
+            crossHairs.transform.position = new Vector3(10f, 10f);
+            Tween.Position(crossHairs, defendantStand.position + Vector3.up * 0.5f, 2f, 0f, Tween.EaseOutStrong);
+            yield return new WaitForSeconds(3f);
+            SceneTransition.instance.BlackOut();
+            AudioController.Instance.PlaySound2D("explode");
+            yield return new WaitForSeconds(2f);
+            defendantIndex++;
+        }
+        else
+        {
+            ShowDefendantFear(false);
+            SceneTransition.instance.Transition(false);
+            yield return new WaitForSeconds(0.6f);
+        }
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Story_" + (defendantIndex + 1));
+    }
+
     private IEnumerator DefendantSequence()
     {
         var guiltReqs = defendants[defendantIndex].guiltPhases;
@@ -129,6 +177,15 @@ public class GameFlowManager : ManagedBehaviour
             AudioController.Instance.PlaySound2D("whoosh", pitch: new AudioParams.Pitch(0.5f));
             yield return new WaitForSeconds(0.35f);
             yield return trialSequencer.TrialSequence(guiltReqs[i], (bool succeeded) => trialSucceeded = succeeded);
+
+#if UNITY_EDITOR
+            if (Input.GetKey(KeyCode.BackQuote))
+            {
+                i = 10;
+            }
+#endif
         }
+
+        yield return SentencingSequence(trialSucceeded);
     }
 }
