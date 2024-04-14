@@ -27,6 +27,7 @@ public enum AfterVoteAction
 [CreateAssetMenu(fileName = "JurorData", menuName = "JurorData", order = 1)]
 public class JurorData : ScriptableObject
 {
+    public int cost = 2;
     public string nameText;
     [TextArea]
     public string detailText;

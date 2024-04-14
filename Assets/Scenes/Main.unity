@@ -220,7 +220,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 87591097}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 3.296, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -660,12 +660,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxWidth: 13
   maxSpacing: 2.5
+  jurorCardPrefab: {fileID: 703435353817029497, guid: 17647c2aef7ef6b4287b1e3361b2c20f, type: 3}
+  jurorCardsParent: {fileID: 87591098}
   jurorsOnBench:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 69561661}
-  - {fileID: 0}
 --- !u!1 &368178173
 GameObject:
   m_ObjectHideFlags: 0
@@ -1042,6 +1040,7 @@ MonoBehaviour:
   leftAnchor: {x: -3.5, y: -2.39}
   jurorSpacing: 3.5
   cardsY: -3.6
+  cam: {fileID: 119788233}
 --- !u!1001 &716316070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1059,7 +1058,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 703435353817029496, guid: 17647c2aef7ef6b4287b1e3361b2c20f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.296
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 703435353817029496, guid: 17647c2aef7ef6b4287b1e3361b2c20f, type: 3}
       propertyPath: m_LocalPosition.z

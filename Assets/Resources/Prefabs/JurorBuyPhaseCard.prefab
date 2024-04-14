@@ -196,6 +196,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8519501493862191394, guid: 17647c2aef7ef6b4287b1e3361b2c20f, type: 3}
+      propertyPath: xExtent
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8519501493862191394, guid: 17647c2aef7ef6b4287b1e3361b2c20f, type: 3}
       propertyPath: isBuyPhase
       value: 1
       objectReference: {fileID: 0}

@@ -6,8 +6,8 @@ using Pixelplacement;
 
 public class JurorInteractable : DraggableInteractable
 {
-    public bool Benched { get; set; } = true; //<--
     public JurorCard Card { get; set; }
+    public GameObject Prefab { get; set; }
 
     public Disposition VoteOutcome
     {
@@ -54,7 +54,7 @@ public class JurorInteractable : DraggableInteractable
     public override void ManagedUpdate()
     {
         base.ManagedUpdate();
-        anim.SetDispositionShown(!BeingDragged && Benched && !voted);
+        anim.SetDispositionShown(!BeingDragged && !voted);
         anim.ShowDispositionType(disposition);
     }
 

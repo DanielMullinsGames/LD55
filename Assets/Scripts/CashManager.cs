@@ -25,8 +25,13 @@ public class CashManager : ManagedBehaviour
 
         Tween.LocalScale(animParent, Vector2.one * 0.75f, 0.1f, 0f, Tween.EaseInOut, completeCallback: () =>
         {
-            cashText.text = "x " + amount.ToString();
+            cashText.text = "x " + Cash.ToString();
             Tween.LocalScale(animParent, Vector2.one, 0.1f, 0f, Tween.EaseInOut);
         });
+    }
+
+    public void BlinkCash()
+    {
+        CustomCoroutine.FlickerSequence(() => animParent.gameObject.SetActive(true), () => animParent.gameObject.SetActive(false), false, true, 0.1f, 4);
     }
 }

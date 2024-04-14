@@ -14,12 +14,33 @@ public class BenchArea : ManagedBehaviour
     private float maxSpacing = default;
 
     [SerializeField]
+    private GameObject jurorCardPrefab = default;
+
+    [SerializeField]
+    private Transform jurorCardsParent = default;
+
+    [SerializeField]
     private List<JurorInteractable> jurorsOnBench = default;
 
     protected override void ManagedInitialize()
     {
         instance = this;
         UpdateJurorPositions(null, immediate: true);
+    }
+
+    public void SpawnJuror(GameObject prefab)
+    {
+        var jurorObj = Instantiate(prefab, transform);
+        var juror = jurorObj.GetComponent<JurorInteractable>();
+        juror.Prefab = prefab;
+        jurorsOnBench.Add(juror);
+
+        var cardObj = Instantiate(jurorCardPrefab, jurorCardsParent);
+        cardObj.transform.position = new Vector2(jurorObj.transform.position.x, jurorCardsParent.position.y);
+        var card = cardObj.GetComponent<JurorCard>();
+        card.juror = juror;
+
+        UpdateJurorPositions(null, true);
     }
 
     public override void ManagedUpdate()
