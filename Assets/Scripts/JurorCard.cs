@@ -62,6 +62,12 @@ public class JurorCard : ManagedBehaviour
 
     public override void ManagedUpdate()
     {
+        if (juror == null || ReferenceEquals(juror, null))
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         transform.position = new Vector2(juror.transform.position.x, transform.position.y);
         transform.localPosition = new Vector2(Mathf.Clamp(transform.localPosition.x, -xExtent, xExtent), transform.localPosition.y);
 

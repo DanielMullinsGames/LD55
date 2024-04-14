@@ -1368,6 +1368,9 @@ MonoBehaviour:
   jurorSpacing: 3.25
   cardsY: -3.6
   cam: {fileID: 119788233}
+  uiParent: {fileID: 1185096620}
+  rerollButton: {fileID: 1198547434}
+  endPhaseButton: {fileID: 1326116637}
 --- !u!1001 &716316070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2134,6 +2137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1198547432}
   - component: {fileID: 1198547433}
+  - component: {fileID: 1198547434}
   m_Layer: 0
   m_Name: RerollButton
   m_TagString: Untagged
@@ -2186,6 +2190,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.42, y: 0.72}
   m_EdgeRadius: 0
+--- !u!114 &1198547434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198547431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be02bace7c869764eb225c87987f9640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseSortOrder: 0
 --- !u!1 &1300966054
 GameObject:
   m_ObjectHideFlags: 0
@@ -2280,6 +2297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1326116635}
   - component: {fileID: 1326116636}
+  - component: {fileID: 1326116637}
   m_Layer: 0
   m_Name: TrialButton
   m_TagString: Untagged
@@ -2331,6 +2349,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.42, y: 0.72}
   m_EdgeRadius: 0
+--- !u!114 &1326116637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326116634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be02bace7c869764eb225c87987f9640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseSortOrder: 0
 --- !u!1 &1389746597
 GameObject:
   m_ObjectHideFlags: 0

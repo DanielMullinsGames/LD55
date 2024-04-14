@@ -26,13 +26,39 @@ public class BuyPhaseSequencer : ManagedBehaviour
     [SerializeField]
     private Camera cam = default;
 
+    [SerializeField]
+    private Transform uiParent = default;
+
+    [SerializeField]
+    private Interactable rerollButton = default;
+
+    [SerializeField]
+    private Interactable endPhaseButton = default;
+
     private List<JurorInteractable> buyableJurors = new();
     private List<JurorCard> buyableJurorCards = new();
+
+    private void Start()
+    {
+        endPhaseButton.CursorSelectStarted += (Interactable i) => endedPhase = true;
+        rerollButton.CursorSelectStarted += (Interactable i) => OnRerollPressed();
+    }
 
     public IEnumerator BuySequence()
     {
         endedPhase = false;
 
+        yield return SpawnJurors();
+        CashManager.instance.AdjustCash(income);
+
+        yield return new WaitUntil(() => endedPhase);
+        CamShake();
+        yield return new WaitForSeconds(0.1f);
+        yield return ClearJurors();
+    }
+
+    private IEnumerator SpawnJurors()
+    {
         var remainingPool = new List<GameObject>(jurorPrefabPool);
         for (int i = 0; i < 3; i++)
         {
@@ -41,10 +67,47 @@ public class BuyPhaseSequencer : ManagedBehaviour
             SpawnJuror(random, i);
             yield return new WaitForSeconds(0.25f);
         }
+    }
 
-        CashManager.instance.AdjustCash(income);
+    private IEnumerator ClearJurors()
+    {
+        foreach (var juror in buyableJurors)
+        {
+            if (juror != null)
+            {
+                Tween.Position(juror.transform, juror.transform.position + Vector3.left * 10f, 0.5f, 0f, Tween.EaseIn);
+                Destroy(juror.gameObject, 1f);
+                yield return new WaitForSeconds(0.05f);
+            }
+        }
+        buyableJurors.Clear();
+        buyableJurorCards.Clear();
+    }
 
-        yield return new WaitUntil(() => endedPhase);
+    private void OnRerollPressed()
+    {
+        if (CashManager.instance.Cash >= 1)
+        {
+            StartCoroutine(RerollSequence());
+            CamShake();
+            CashManager.instance.AdjustCash(-1);
+        }
+        else
+        {
+            CamShake();
+            CashManager.instance.BlinkCash();
+        }
+    }
+    
+    private IEnumerator RerollSequence()
+    {
+        rerollButton.SetCollisionEnabled(false);
+        endPhaseButton.SetCollisionEnabled(false);
+        yield return ClearJurors();
+        yield return new WaitForSeconds(0.2f);
+        yield return SpawnJurors();
+        rerollButton.SetCollisionEnabled(true);
+        endPhaseButton.SetCollisionEnabled(true);
     }
 
     private void SpawnJuror(GameObject jurorPrefab, int index)
@@ -78,14 +141,18 @@ public class BuyPhaseSequencer : ManagedBehaviour
 
             BenchArea.instance.SpawnJuror(juror.Prefab);
 
-            Tween.Shake(cam.transform, new Vector3(0f, 0f, cam.transform.position.z), Vector2.one * 0.04f, 0.2f, 0f);
-
+            CamShake();
             CashManager.instance.AdjustCash(-juror.Data.cost);
         }
         else
         {
-            Tween.Shake(cam.transform, new Vector3(0f, 0f, cam.transform.position.z), Vector2.one * 0.04f, 0.2f, 0f);
+            CamShake();
             CashManager.instance.BlinkCash();
         }
+    }
+
+    private void CamShake()
+    {
+        Tween.Shake(cam.transform, new Vector3(0f, 0f, cam.transform.position.z), Vector2.one * 0.04f, 0.2f, 0f);
     }
 }
