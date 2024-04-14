@@ -12,10 +12,10 @@ public class GameFlowManager : ManagedBehaviour
     private BuyPhaseSequencer buyPhaseSequencer = default;
 
     [SerializeField]
-    private Transform benchParent = default;
+    private MetaPhaseSequencer metaPhaseSequencer = default;
 
     [SerializeField]
-    private BenchArea benchArea = default;
+    private Transform benchParent = default;
 
     [SerializeField]
     private Vector2 buyPhaseBenchPos = default;
@@ -59,6 +59,10 @@ public class GameFlowManager : ManagedBehaviour
         int numRounds = 5;
         for (int i = 0; i < numRounds; i++)
         {
+            benchParent.transform.position = trialPhaseBenchPos;
+            yield return metaPhaseSequencer.MetaPhase(i, PHASE_GUILT_REQUIREMENTS, PHASE_TRIAL_NAMES);
+            yield return new WaitForSeconds(0.1f);
+
             Tween.Position(benchParent, buyPhaseBenchPos, 0.25f, 0f, Tween.EaseInOut);
             yield return new WaitForSeconds(0.35f);
             yield return buyPhaseSequencer.BuySequence(PHASE_GUILT_REQUIREMENTS[i], PHASE_TRIAL_NAMES[i]);
@@ -68,8 +72,6 @@ public class GameFlowManager : ManagedBehaviour
             Tween.Position(benchParent, trialPhaseBenchPos, 0.25f, 0f, Tween.EaseInOut);
             yield return new WaitForSeconds(0.35f);
             yield return trialSequencer.TrialSequence(PHASE_GUILT_REQUIREMENTS[i], (bool succeeded) => trialSucceeded = succeeded);
-
-            // SHOW progress
         }
     }
 }
