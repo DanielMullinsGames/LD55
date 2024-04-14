@@ -539,6 +539,7 @@ MonoBehaviour:
   bonusPaymentText: {fileID: 975005962}
   defendantPowerText: {fileID: 1420146258}
   mickeyHorsePrefab: {fileID: 3029056915368636540, guid: c0ed2e7a057d49f43a07ea7658dfa217, type: 3}
+  crossHairs: {fileID: 706598103}
 --- !u!1001 &81446964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3950,7 +3951,7 @@ MonoBehaviour:
     activeOnStart: []
   - name: John Wilkes Booth
     anim: {fileID: 1232020302}
-    guiltPhases: 0100000002000000030000000400000006000000
+    guiltPhases: 0100000002000000030000000400000005000000
     activeOnStart: []
   - name: Mickey Mouse
     anim: {fileID: 1596828844}
@@ -3961,7 +3962,7 @@ MonoBehaviour:
     anim: {fileID: 176624295}
     guiltPhases: 0100000002000000040000000600000008000000
     activeOnStart: []
-  debugDefendantIndex: 2
+  debugDefendantIndex: 1
 --- !u!1 &975005960
 GameObject:
   m_ObjectHideFlags: 0

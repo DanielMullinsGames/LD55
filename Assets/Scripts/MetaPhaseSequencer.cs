@@ -32,6 +32,9 @@ public class MetaPhaseSequencer : ManagedBehaviour
     [SerializeField]
     private GameObject mickeyHorsePrefab = default;
 
+    [SerializeField]
+    private Transform crossHairs = default;
+
     private void Start()
     {
         transform.position = new Vector2(0f, 10f);
@@ -95,7 +98,26 @@ public class MetaPhaseSequencer : ManagedBehaviour
         // Booth
         if (GameFlowManager.defendantIndex == 1)
         {
+            if ((roundIndex == 2 || roundIndex == 4) && BenchArea.instance.Jurors.Count > 0)
+            {
+                defendantPowerText.gameObject.SetActive(true);
+                defendantPowerText.text = "DEFENDANT POWER: ASSASSINATION!";
+                AudioController.Instance.PlaySound2D("negate_1");
+                yield return new WaitForSeconds(1.5f);
 
+                var target = BenchArea.instance.Jurors[0];
+                crossHairs.gameObject.SetActive(true);
+                crossHairs.transform.position = new Vector3(10f, 10f);
+                Tween.Position(crossHairs, target.transform.position + Vector3.up * 0.5f, 2f, 0f, Tween.EaseOutStrong);
+                yield return new WaitForSeconds(3f);
+                AudioController.Instance.PlaySound2D("explode");
+                AudioController.Instance.PlaySound2D("juror_die", 0.5f);
+                Destroy(target.gameObject);
+                crossHairs.gameObject.SetActive(false);
+                CamShake();
+                yield return new WaitForSeconds(1.5f);
+                defendantPowerText.gameObject.SetActive(false);
+            }
         }
         // Mickey
         if (GameFlowManager.defendantIndex == 2)

@@ -78,7 +78,6 @@ public class JurorInteractable : DraggableInteractable
         if (data.special == SpecialTrait.Dies && Random.value > 0.5f)
         {
             Destroy(gameObject);
-            CashManager.instance.AdjustCash(1);
             AudioController.Instance.PlaySound2D("juror_die", 0.5f);
             AudioController.Instance.PlaySound2D("negate_3");
         }
