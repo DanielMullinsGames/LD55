@@ -21,7 +21,7 @@ public class IntroScene : ManagedBehaviour
         if (transform.position.y > endSceneY)
         {
             enabled = false;
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Story_1");
             AudioController.Instance.FadeSourceVolume(musicSource, 0f, 1f);
         }
     }
