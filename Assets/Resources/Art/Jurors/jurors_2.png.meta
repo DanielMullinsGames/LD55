@@ -1,0 +1,452 @@
+fileFormatVersion: 2
+guid: c757b659a478b1e4a94225c6cb60b6cb
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 200
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: jurors_2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 173
+        width: 133
+        height: 117
+      alignment: 9
+      pivot: {x: 0.528609, y: 0.71138954}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f805ddffb82becf479096772450f7395
+      internalID: -1293648921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jurors_2_1
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 179
+        width: 81
+        height: 87
+      alignment: 9
+      pivot: {x: 0.5000002, y: 0.8389496}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8e1fa8904eea4e48b4bd06e30fe14ae
+      internalID: -114206320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jurors_2_2
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 16
+        width: 151
+        height: 230
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 904e46566e7a7e149a8ed7884bba76ea
+      internalID: 719705330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jurors_2_3
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 208
+        width: 113
+        height: 99
+      alignment: 9
+      pivot: {x: 0.45040274, y: 0.7587937}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c7acb97eadeb0842824f9f74fb5958b
+      internalID: -1493993692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jurors_2_4
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 208
+        width: 128
+        height: 121
+      alignment: 9
+      pivot: {x: 0.581748, y: 0.45283118}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5e322379c9ccac47a6196c0c3df9d3d
+      internalID: 1814710628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jurors_2_5
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 210
+        width: 128
+        height: 98
+      alignment: 9
+      pivot: {x: 0.5048294, y: 0.7712698}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05457b1fa410a7144a8b480238ef5284
+      internalID: -2047161027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jurors_2_6
+      rect:
+        serializedVersion: 2
+        x: 1009
+        y: 206
+        width: 122
+        height: 124
+      alignment: 9
+      pivot: {x: 0.51104736, y: 0.5706492}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0deee5f59bfca44408ec59990e74241d
+      internalID: 795423601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jurors_2_7
+      rect:
+        serializedVersion: 2
+        x: 1191
+        y: 191
+        width: 113
+        height: 118
+      alignment: 9
+      pivot: {x: 0.41792986, y: 0.7776851}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 707a307938fd75644b7a39f826e1cc05
+      internalID: -268711106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jurors_2_8
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 8
+        width: 119
+        height: 154
+      alignment: 9
+      pivot: {x: 0.5079937, y: 0.5820511}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6043d15766df53a4683f5dbc1eb38bd1
+      internalID: -1398354217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jurors_2_9
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 13
+        width: 124
+        height: 156
+      alignment: 9
+      pivot: {x: 0.49232888, y: 0.6158569}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18dbe6cd898e96646a015a9767b82ddd
+      internalID: -1864041283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jurors_2_10
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 12
+        width: 150
+        height: 177
+      alignment: 9
+      pivot: {x: 0.49466228, y: 0.5814213}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44bd3698b68a53941a6a9b872188b853
+      internalID: 12720664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jurors_2_11
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 7
+        width: 143
+        height: 184
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f72e2f5e061d91241bfe7420080200b2
+      internalID: -461938418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jurors_2_12
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 14
+        width: 134
+        height: 188
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d425862bcdd8a748b0556fdf1dcb8e5
+      internalID: -545737604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jurors_2_13
+      rect:
+        serializedVersion: 2
+        x: 1009
+        y: 0
+        width: 137
+        height: 193
+      alignment: 9
+      pivot: {x: 0.49508154, y: 0.5593577}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccffdaa4f4c88c24bb57d43dad7ca18a
+      internalID: -250651002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jurors_2_14
+      rect:
+        serializedVersion: 2
+        x: 1175
+        y: 1
+        width: 140
+        height: 185
+      alignment: 9
+      pivot: {x: 0.35868618, y: 0.60359746}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b77ad22ded983d546b55ead7987c07a4
+      internalID: 717409558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      jurors_2_8: -1398354217
+      jurors_2_3: -1493993692
+      jurors_2_9: -1864041283
+      jurors_2_10: 12720664
+      jurors_2_4: 1814710628
+      jurors_2_14: 717409558
+      jurors_2_1: -114206320
+      jurors_2_13: -250651002
+      jurors_2_7: -268711106
+      jurors_2_5: -2047161027
+      jurors_2_6: 795423601
+      jurors_2_11: -461938418
+      jurors_2_2: 719705330
+      jurors_2_12: -545737604
+      jurors_2_0: -1293648921
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
