@@ -36,6 +36,9 @@ public class BuyPhaseSequencer : ManagedBehaviour
     private Interactable endPhaseButton = default;
 
     [SerializeField]
+    private TMPro.TextMeshPro trialDetailText = default;
+
+    [SerializeField]
     private GameObject fullBenchText = default;
 
     private List<JurorInteractable> buyableJurors = new();
@@ -48,14 +51,19 @@ public class BuyPhaseSequencer : ManagedBehaviour
         endPhaseButton.CursorSelectStarted += (Interactable i) => endedPhase = true;
         rerollButton.CursorSelectStarted += (Interactable i) => OnRerollPressed();
         uiParent.transform.localPosition = OFFSCREEN_UI_POS;
+        endPhaseButton.gameObject.SetActive(false);
     }
 
-    public IEnumerator BuySequence()
+    public IEnumerator BuySequence(int guiltNeeded, string trialName)
     {
+        trialDetailText.text = trialName + "\n" + guiltNeeded + " guilty votes needed";
+
         endedPhase = false;
         Tween.Shake(cam.transform, new Vector3(0f, 0f, cam.transform.position.z), Vector2.one * 0.04f, 1.5f, 0f);
         Tween.LocalPosition(uiParent, Vector2.zero, 1.5f, 0f, Tween.EaseOutStrong);
-        yield return new WaitForSeconds(1.6f);
+        yield return new WaitForSeconds(1.5f);
+        endPhaseButton.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
 
         yield return SpawnJurors();
         CashManager.instance.AdjustCash(income);
@@ -63,6 +71,7 @@ public class BuyPhaseSequencer : ManagedBehaviour
         yield return new WaitUntil(() => endedPhase);
         CamShake();
         yield return new WaitForSeconds(0.1f);
+        endPhaseButton.gameObject.SetActive(false);
         yield return ClearJurors();
         yield return new WaitForSeconds(0.2f);
         Tween.Shake(cam.transform, new Vector3(0f, 0f, cam.transform.position.z), Vector2.one * 0.04f, 1.5f, 0f);

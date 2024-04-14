@@ -58,7 +58,7 @@ public class TrialSequencer : ManagedBehaviour
         foreach (var juror in bench.Jurors)
         {
             yield return juror.VoteSequence();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.4f);
         }
 
         // Count Votes
@@ -78,7 +78,7 @@ public class TrialSequencer : ManagedBehaviour
                 numVotes += juror.NumVotes;
                 PunchReqText(() => UpdateReqText(requiredVotes, numVotes));
                 juror.CleanupVotes();
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.5f);
             }
         }
         yield return new WaitForSeconds(0.25f);
@@ -88,7 +88,7 @@ public class TrialSequencer : ManagedBehaviour
         yield return new WaitForSeconds(0.9f);
         bool guilty = numVotes >= requiredVotes;
         PunchReqText(() => requirementText.text = guilty ? "GUILTY!" : "INNOCENT!");
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         // TODO: show defendant... killed?
 
