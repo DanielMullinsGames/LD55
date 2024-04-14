@@ -37,7 +37,7 @@ public class TrialSequencer : ManagedBehaviour
         judgeStand.transform.position = new Vector2(judgeStand.position.x, STAND_OFFSCREEN_Y);
     }
 
-    public IEnumerator TrialSequence(int requiredVotes, System.Action<bool> completedCallback)
+    public IEnumerator TrialSequence(bool lastTrial, int requiredVotes, System.Action<bool> completedCallback)
     {
         // Setup
         int numVotes = 0;
@@ -113,7 +113,10 @@ public class TrialSequencer : ManagedBehaviour
         AudioController.Instance.PlaySound2D("weird_power", pitch: new AudioParams.Pitch(0.8f));
         yield return new WaitForSeconds(2f);
 
-        bench.Jurors.ForEach(x => x.OnTrialEnded());
+        if (!lastTrial)
+        {
+            bench.Jurors.ForEach(x => x.OnTrialEnded());
+        }
         GameFlowManager.instance.ShowDefendantFear(false);
         completedCallback?.Invoke(guilty);
     }

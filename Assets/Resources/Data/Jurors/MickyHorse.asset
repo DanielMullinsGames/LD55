@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 2
   nameText: Horse
-  detailText: Thinks Mickey is innocent
+  detailText: Thinks Mickey is innocent and can't be sold
   disposition: 2
   decisionMethod: 0
   afterVoteAction: 0
+  special: 2

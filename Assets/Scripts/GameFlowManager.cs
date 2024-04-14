@@ -194,7 +194,7 @@ public class GameFlowManager : ManagedBehaviour
             Tween.Position(benchParent, trialPhaseBenchPos, 0.25f, 0f, Tween.EaseInOut);
             AudioController.Instance.PlaySound2D("whoosh", pitch: new AudioParams.Pitch(0.5f));
             yield return new WaitForSeconds(0.35f);
-            yield return trialSequencer.TrialSequence(guiltReqs[i], (bool succeeded) => trialSucceeded = succeeded);
+            yield return trialSequencer.TrialSequence(i == numRounds - 1, guiltReqs[i], (bool succeeded) => trialSucceeded = succeeded);
 
 #if UNITY_EDITOR
             if (Input.GetKey(KeyCode.BackQuote))

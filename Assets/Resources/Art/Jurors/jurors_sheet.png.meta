@@ -847,7 +847,7 @@ TextureImporter:
         width: 271
         height: 81
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -868,7 +868,7 @@ TextureImporter:
         width: 261
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -876,6 +876,48 @@ TextureImporter:
       bones: []
       spriteID: 4ee1c2098eac9e74db8f831145a41558
       internalID: 704248041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jurors_sheet_37
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 396
+        width: 60
+        height: 61
+      alignment: 9
+      pivot: {x: 0.48299712, y: 0.6226456}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c71b5344df932c46bc01a6984790741
+      internalID: -1132242189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jurors_sheet_38
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 466
+        width: 127
+        height: 64
+      alignment: 9
+      pivot: {x: 0.7302756, y: 0.6965971}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1cdddd44fb530c4bb16a6add4d4b7c1
+      internalID: 1392389069
       vertices: []
       indices: 
       edges: []
@@ -923,9 +965,11 @@ TextureImporter:
       jurors_sheet_4: 446888085
       jurors_sheet_5: 1963302392
       jurors_sheet_27: 1944409702
+      jurors_sheet_37: -1132242189
       jurors_sheet_2: -1267779058
       jurors_sheet_30: 1895192204
       jurors_sheet_10: -1398655805
+      jurors_sheet_38: 1392389069
       jurors_sheet_14: 1001296078
       jurors_sheet_6: 979145093
   spritePackingTag: 

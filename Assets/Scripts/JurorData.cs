@@ -29,6 +29,13 @@ public enum AfterVoteAction
     ChangeLeftToGuilty,
 }
 
+public enum SpecialTrait
+{
+    None,
+    Dies,
+    CantSell,
+}
+
 [CreateAssetMenu(fileName = "JurorData", menuName = "JurorData", order = 1)]
 public class JurorData : ScriptableObject
 {
@@ -39,4 +46,5 @@ public class JurorData : ScriptableObject
     public Disposition disposition = Disposition.Guilty;
     public DecisionMethod decisionMethod = DecisionMethod.Normal;
     public AfterVoteAction afterVoteAction = AfterVoteAction.None;
+    public SpecialTrait special = SpecialTrait.None;
 }

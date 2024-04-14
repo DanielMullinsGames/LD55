@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 2
   nameText: Octogenarian
-  detailText: After trial, 50% chance of dying
+  detailText: 'After trial: 1 in 2 chance of dying'
   disposition: 1
   decisionMethod: 0
   afterVoteAction: 0
+  special: 1

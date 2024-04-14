@@ -75,8 +75,18 @@ public class JurorInteractable : DraggableInteractable
 
     public void OnTrialEnded()
     {
-        voted = false;
-        SetCollisionEnabled(true);
+        if (data.special == SpecialTrait.Dies && Random.value > 0.5f)
+        {
+            Destroy(gameObject);
+            CashManager.instance.AdjustCash(1);
+            AudioController.Instance.PlaySound2D("juror_die", 0.5f);
+            AudioController.Instance.PlaySound2D("negate_3");
+        }
+        else
+        {
+            voted = false;
+            SetCollisionEnabled(true);
+        }
     }
 
     public void CleanupVotes()
@@ -121,7 +131,10 @@ public class JurorInteractable : DraggableInteractable
     {
         if (SellArea.instance.gameObject.activeInHierarchy && GetComponent<Collider2D>().bounds.Intersects(SellArea.instance.Bounds))
         {
-            SellArea.instance.SellJuror(this);
+            if (data.special != SpecialTrait.CantSell)
+            {
+                SellArea.instance.SellJuror(this);
+            }
         }
     }
 
@@ -138,7 +151,7 @@ public class JurorInteractable : DraggableInteractable
         yield return new WaitForSeconds(0.1f);
     }
 
-    private IEnumerator PostVoteActionSequence(AfterVoteAction action, Disposition vote)
+    public IEnumerator PostVoteActionSequence(AfterVoteAction action, Disposition vote)
     {
         Card.SetActionBadgePulsing(true);
         yield return new WaitForSeconds(0.5f);
@@ -155,7 +168,7 @@ public class JurorInteractable : DraggableInteractable
                 yield return new WaitForSeconds(1f);
                 break;
             case AfterVoteAction.ChangeLeftToGuilty:
-                anim.SetTrigger("priest");
+                anim.SetTrigger("fist");
                 yield return new WaitForSeconds(0.5f);
                 var left = GetLeftJuror();
                 if (left != null)
@@ -165,13 +178,28 @@ public class JurorInteractable : DraggableInteractable
                 yield return new WaitForSeconds(1f);
                 break;
             case AfterVoteAction.SwitchAll:
-                anim.SetTrigger("priest");
+                anim.SetTrigger("gun");
                 yield return new WaitForSeconds(0.5f);
                 int index = BenchArea.instance.Jurors.IndexOf(this);
                 for (int i = 0; i < index; i++)
                 {
                     bool toGuilty = BenchArea.instance.Jurors[i].VoteOutcome == Disposition.Innocent;
                     BenchArea.instance.Jurors[i].ChangeVotes(toGuilty ? Disposition.Guilty : Disposition.Innocent);
+                    yield return new WaitForSeconds(0.1f);
+                }
+                yield return new WaitForSeconds(0.1f);
+                break;
+            case AfterVoteAction.DoubleActivate:
+                anim.SetTrigger("fist");
+                yield return new WaitForSeconds(0.5f);
+                int index2 = BenchArea.instance.Jurors.IndexOf(this);
+                for (int i = 0; i < index2; i++)
+                {
+                    var j = BenchArea.instance.Jurors[i];
+                    if (j.data.afterVoteAction != AfterVoteAction.None)
+                    {
+                        yield return j.PostVoteActionSequence(j.data.afterVoteAction, j.VoteOutcome);
+                    }
                     yield return new WaitForSeconds(0.1f);
                 }
                 yield return new WaitForSeconds(0.1f);
