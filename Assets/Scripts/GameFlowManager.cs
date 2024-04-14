@@ -9,6 +9,7 @@ public class Defendant
     public string name;
     public Animator anim;
     public int[] guiltPhases;
+    public List<GameObject> activeOnStart = new();
 }
 
 public class GameFlowManager : ManagedBehaviour
@@ -110,6 +111,8 @@ public class GameFlowManager : ManagedBehaviour
 
     private IEnumerator DefendantIntroSequence()
     {
+        defendants[defendantIndex].activeOnStart.ForEach(x => x.SetActive(true));
+
         benchParent.transform.position = new Vector2(buyPhaseBenchPos.x, -14f);
         defendantStand.transform.position = new Vector2(0f, -14f);
         defendants[defendantIndex].anim.gameObject.SetActive(true);

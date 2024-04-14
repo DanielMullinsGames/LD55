@@ -53,5 +53,11 @@ public class StoryScene : ManagedBehaviour
             SceneTransition.instance.Transition(false);
             UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
         }
+        else
+        {
+            yield return new WaitForSeconds(0.25f);
+            yield return new WaitUntil(() => Input.anyKey);
+            Application.Quit();
+        }
     }
 }
