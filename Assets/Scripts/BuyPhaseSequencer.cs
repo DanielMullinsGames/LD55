@@ -66,7 +66,8 @@ public class BuyPhaseSequencer : ManagedBehaviour
         rerollButton.gameObject.SetActive(!tutorial1 && !tutorial2);
         SellArea.instance.gameObject.SetActive(!tutorial1 && !tutorial2);
 
-        trialDetailText.text = trialName + "\n" + guiltNeeded + " guilty votes needed";
+        string valance = GameFlowManager.ProveInnocence ? " innocent " : " guilty ";
+        trialDetailText.text = trialName + "\n" + guiltNeeded + valance + "votes needed";
 
         endedPhase = false;
         Tween.Shake(cam.transform, new Vector3(0f, 0f, cam.transform.position.z), Vector2.one * 0.04f, 1.5f, 0f);

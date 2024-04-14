@@ -15,6 +15,8 @@ public class Defendant
 public class GameFlowManager : ManagedBehaviour
 {
     public static GameFlowManager instance;
+    public static int defendantIndex = 0;
+    public static bool ProveInnocence => defendantIndex == 3;
 
     [SerializeField]
     private TrialSequencer trialSequencer = default;
@@ -52,7 +54,6 @@ public class GameFlowManager : ManagedBehaviour
     [Header("DEFENDANTS")]
     [SerializeField]
     private List<Defendant> defendants = new();
-    public static int defendantIndex = 0;
 
     [Header("DEBUG")]
     public int debugDefendantIndex = 0;
@@ -137,7 +138,7 @@ public class GameFlowManager : ManagedBehaviour
         AudioController.Instance.PlaySound2D("horn_1");
     }
 
-    private IEnumerator SentencingSequence(bool guilty)
+    private IEnumerator SentencingSequence(bool succeeded)
     {
         AudioController.Instance.PlaySound2D("whoosh");
         Tween.Position(defendantStand, new Vector2(0f, trialDefendantPos.y), 1f, 0f, Tween.EaseOutStrong);
@@ -145,33 +146,58 @@ public class GameFlowManager : ManagedBehaviour
         yield return new WaitForSeconds(2f);
 
         finalVerdictText.gameObject.SetActive(true);
-        finalVerdictText.text = "FINAL VERDICT: " + (guilty ? "GUILTY!" : "INNOCENT!");
         AudioController.Instance.PlaySound2D("horn_1");
-        if (guilty)
+
+        if (ProveInnocence)
         {
-            crossHairs.gameObject.SetActive(true);
-            crossHairs.transform.position = new Vector3(10f, 10f);
-            Tween.Position(crossHairs, defendantStand.position + Vector3.up * 0.5f, 2f, 0f, Tween.EaseOutStrong);
-            yield return new WaitForSeconds(3f);
-            SceneTransition.instance.BlackOut();
-            AudioController.Instance.PlaySound2D("explode");
-            yield return new WaitForSeconds(2f);
-            defendantIndex++;
+            finalVerdictText.text = "FINAL VERDICT: " + (succeeded ? "INNOCENT!" : "GUILTY!");
+            if (succeeded)
+            {
+                yield return new WaitForSeconds(2f);
+                AudioController.Instance.PlaySound2D("whoosh");
+                SceneTransition.instance.Transition(false);
+                yield return new WaitForSeconds(0.6f);
+                defendantIndex++;
+            }
+            else
+            {
+                yield return Failure();
+            }
         }
         else
         {
-            ShowDefendantFear(false);
-            yield return new WaitForSeconds(1.5f);
-            finalVerdictText.text = "GAME OVER. CLICK TO RESTART TRIAL.";
-            AudioController.Instance.PlaySound2D("horn_1");
-            yield return new WaitForSeconds(0.25f);
-            yield return new WaitUntil(() => Input.GetMouseButton(0));
-            AudioController.Instance.PlaySound2D("whoosh");
-            SceneTransition.instance.Transition(false);
-            yield return new WaitForSeconds(0.6f);
+            finalVerdictText.text = "FINAL VERDICT: " + (succeeded ? "GUILTY!" : "INNOCENT!");
+            if (succeeded)
+            {
+                crossHairs.gameObject.SetActive(true);
+                crossHairs.transform.position = new Vector3(10f, 10f);
+                Tween.Position(crossHairs, defendantStand.position + Vector3.up * 0.5f, 2f, 0f, Tween.EaseOutStrong);
+                yield return new WaitForSeconds(3f);
+                SceneTransition.instance.BlackOut();
+                AudioController.Instance.PlaySound2D("explode");
+                yield return new WaitForSeconds(2f);
+                defendantIndex++;
+            }
+            else
+            {
+                yield return Failure();
+            }
         }
 
         UnityEngine.SceneManagement.SceneManager.LoadScene("Story_" + (defendantIndex + 1));
+    }
+
+    private IEnumerator Failure()
+    {
+        ShowDefendantFear(false);
+        yield return new WaitForSeconds(1.5f);
+        finalVerdictText.text = "GAME OVER. CLICK TO RESTART TRIAL.";
+        AudioController.Instance.PlaySound2D("horn_1");
+        yield return new WaitForSeconds(0.25f);
+        yield return new WaitUntil(() => Input.GetMouseButton(0));
+        AudioController.Instance.PlaySound2D("whoosh");
+        SceneTransition.instance.Transition(false);
+        yield return new WaitForSeconds(0.6f);
     }
 
     private IEnumerator DefendantSequence()

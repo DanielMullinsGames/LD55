@@ -63,10 +63,13 @@ public class TrialSequencer : ManagedBehaviour
             yield return new WaitForSeconds(0.4f);
         }
 
+        var successDisp = GameFlowManager.ProveInnocence ? Disposition.Innocent : Disposition.Guilty;
+        var failureDisp = GameFlowManager.ProveInnocence ? Disposition.Guilty : Disposition.Innocent;
+
         // Count Votes
         foreach (var juror in bench.Jurors)
         {
-            if (juror.VoteOutcome == Disposition.Innocent)
+            if (juror.VoteOutcome == failureDisp)
             {
                 juror.CleanupVotes();
                 yield return new WaitForSeconds(0.01f);
@@ -75,7 +78,7 @@ public class TrialSequencer : ManagedBehaviour
         yield return new WaitForSeconds(1f);
         foreach (var juror in bench.Jurors)
         {
-            if (juror.VoteOutcome == Disposition.Guilty)
+            if (juror.VoteOutcome == successDisp)
             {
                 numVotes += juror.NumVotes;
                 PunchReqText(() => UpdateReqText(requiredVotes, numVotes));
@@ -88,20 +91,24 @@ public class TrialSequencer : ManagedBehaviour
         // Verdict
         judgeAnim.SetTrigger("verdict");
         yield return new WaitForSeconds(0.9f);
-        bool guilty = numVotes >= requiredVotes;
+        bool success = numVotes >= requiredVotes;
 #if UNITY_EDITOR
         if (Input.GetKey(KeyCode.BackQuote))
         {
-            guilty = true;
+            success = true;
         }
 #endif
+        bool guilty = success;
+        if (GameFlowManager.ProveInnocence)
+        {
+            guilty = !guilty;
+        }
         PunchReqText(() => requirementText.text = guilty ? "GUILTY!" : "INNOCENT!");
-
         AudioController.Instance.PlaySound2D(guilty ? "judge_guilty" : "judge_innocent");
 
         yield return new WaitForSeconds(1f);
 
-        if (guilty)
+        if (success)
         {
             GameFlowManager.instance.ShowDefendantFear(true);
         }
@@ -118,7 +125,7 @@ public class TrialSequencer : ManagedBehaviour
             bench.Jurors.ForEach(x => x.OnTrialEnded());
         }
         GameFlowManager.instance.ShowDefendantFear(false);
-        completedCallback?.Invoke(guilty);
+        completedCallback?.Invoke(success);
     }
 
     public void OnCameraShakeKeyframe()

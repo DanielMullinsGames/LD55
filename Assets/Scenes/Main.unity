@@ -1844,6 +1844,7 @@ MonoBehaviour:
   jurorCardPrefab: {fileID: 703435353817029497, guid: 17647c2aef7ef6b4287b1e3361b2c20f, type: 3}
   jurorCardsParent: {fileID: 87591098}
   jurorsOnBench: []
+  debugAddJurors: []
 --- !u!1 &368178173
 GameObject:
   m_ObjectHideFlags: 0
@@ -3956,9 +3957,9 @@ MonoBehaviour:
     - {fileID: 1130649668}
   - name: You
     anim: {fileID: 176624295}
-    guiltPhases: 0100000002000000030000000500000007000000
+    guiltPhases: 0100000002000000040000000600000008000000
     activeOnStart: []
-  debugDefendantIndex: 1
+  debugDefendantIndex: 2
 --- !u!1 &975005960
 GameObject:
   m_ObjectHideFlags: 0
