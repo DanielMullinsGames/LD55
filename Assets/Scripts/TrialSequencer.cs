@@ -51,10 +51,10 @@ public class TrialSequencer : ManagedBehaviour
         yield return new WaitForSeconds(1f);
 
         judgeAnim.SetTrigger("order");
+        bench.Jurors.ForEach(x => x.SetCollisionEnabled(false));
         yield return new WaitForSeconds(2f);
 
         // Activate Jurors
-        bench.Jurors.ForEach(x => x.SetCollisionEnabled(false));
         foreach (var juror in bench.Jurors)
         {
             yield return juror.VoteSequence();

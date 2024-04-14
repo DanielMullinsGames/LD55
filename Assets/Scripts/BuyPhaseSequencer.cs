@@ -35,6 +35,9 @@ public class BuyPhaseSequencer : ManagedBehaviour
     [SerializeField]
     private Interactable endPhaseButton = default;
 
+    [SerializeField]
+    private GameObject fullBenchText = default;
+
     private List<JurorInteractable> buyableJurors = new();
     private List<JurorCard> buyableJurorCards = new();
 
@@ -142,7 +145,12 @@ public class BuyPhaseSequencer : ManagedBehaviour
 
     private void OnJurorBuyButtonPressed(JurorInteractable juror)
     {
-        if (CashManager.instance.Cash >= juror.Data.cost)
+        if (BenchArea.instance.Jurors.Count >= 7)
+        {
+            CamShake();
+            CustomCoroutine.FlickerSequence(() => fullBenchText.SetActive(true), () => fullBenchText.SetActive(false), true, false, 0.1f, 3);
+        }
+        else if (CashManager.instance.Cash >= juror.Data.cost)
         {
             int index = buyableJurors.IndexOf(juror);
 
