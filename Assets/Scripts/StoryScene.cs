@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StoryScene : ManagedBehaviour
 {
+    public bool final;
+
     [SerializeField]
     private TMPro.TextMeshPro text = default;
 
@@ -17,7 +19,11 @@ public class StoryScene : ManagedBehaviour
 
     private IEnumerator StorySequence()
     {
-        var music = AudioController.Instance.PlaySound2D("waitingmusic");
+        AudioSource music = null;
+        if (!final)
+        {
+            music = AudioController.Instance.PlaySound2D("waitingmusic");
+        }
         yield return new WaitForSeconds(2f);
         bool stoppedMusic = false;
         foreach (var line in lines)
@@ -37,12 +43,15 @@ public class StoryScene : ManagedBehaviour
             yield return new WaitForSeconds(0.1f);
         }
 
-        if (!stoppedMusic)
+        if (!final)
         {
-            AudioController.Instance.FadeSourceVolume(music, 0f, 1f);
+            if (!stoppedMusic)
+            {
+                AudioController.Instance.FadeSourceVolume(music, 0f, 1f);
+            }
+            yield return new WaitForSeconds(0.25f);
+            SceneTransition.instance.Transition(false);
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
         }
-        yield return new WaitForSeconds(0.25f);
-        SceneTransition.instance.Transition(false);
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
     }
 }

@@ -386,40 +386,68 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 589250176}
     - target: {fileID: 3801475034714923451, guid: 35370ae6450e0034291d4b2f1cb5ace1, type: 3}
+      propertyPath: final
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801475034714923451, guid: 35370ae6450e0034291d4b2f1cb5ace1, type: 3}
       propertyPath: lines.Array.size
-      value: 8
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3801475034714923451, guid: 35370ae6450e0034291d4b2f1cb5ace1, type: 3}
       propertyPath: lines.Array.data[0]
-      value: Nice work, Pete. You won a case against a pidgeon.
+      value: I think we've reached the of the tale, Pete.
       objectReference: {fileID: 0}
     - target: {fileID: 3801475034714923451, guid: 35370ae6450e0034291d4b2f1cb5ace1, type: 3}
       propertyPath: lines.Array.data[1]
-      value: Now how about a real challenge?
+      value: But before we part ways for good...
       objectReference: {fileID: 0}
     - target: {fileID: 3801475034714923451, guid: 35370ae6450e0034291d4b2f1cb5ace1, type: 3}
       propertyPath: lines.Array.data[2]
-      value: Remember the guy who did Abraham Lincoln?
+      value: Don't you want to know who I am?
       objectReference: {fileID: 0}
     - target: {fileID: 3801475034714923451, guid: 35370ae6450e0034291d4b2f1cb5ace1, type: 3}
       propertyPath: lines.Array.data[3]
-      value: He got out on parole and then reoffended.
+      value: Why I put you on to these cases?
       objectReference: {fileID: 0}
     - target: {fileID: 3801475034714923451, guid: 35370ae6450e0034291d4b2f1cb5ace1, type: 3}
       propertyPath: lines.Array.data[4]
-      value: Guy is dangerous. He can kill your jurors.
+      value: ...
       objectReference: {fileID: 0}
     - target: {fileID: 3801475034714923451, guid: 35370ae6450e0034291d4b2f1cb5ace1, type: 3}
       propertyPath: lines.Array.data[5]
-      value: Scared? You have no choice, Pete.
+      value: Well, Booth and Mickey deserved what they got.
       objectReference: {fileID: 0}
     - target: {fileID: 3801475034714923451, guid: 35370ae6450e0034291d4b2f1cb5ace1, type: 3}
       propertyPath: lines.Array.data[6]
-      value: I have those photographs... remember?
+      value: That was justice.
       objectReference: {fileID: 0}
     - target: {fileID: 3801475034714923451, guid: 35370ae6450e0034291d4b2f1cb5ace1, type: 3}
       propertyPath: lines.Array.data[7]
-      value: Now, go and get a conviction.
+      value: But Tammy The Pidgeon?
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801475034714923451, guid: 35370ae6450e0034291d4b2f1cb5ace1, type: 3}
+      propertyPath: lines.Array.data[8]
+      value: Pete... we both have reputations to uphold.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801475034714923451, guid: 35370ae6450e0034291d4b2f1cb5ace1, type: 3}
+      propertyPath: lines.Array.data[9]
+      value: I burned the photographs.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801475034714923451, guid: 35370ae6450e0034291d4b2f1cb5ace1, type: 3}
+      propertyPath: lines.Array.data[10]
+      value: Tammy is gone.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801475034714923451, guid: 35370ae6450e0034291d4b2f1cb5ace1, type: 3}
+      propertyPath: lines.Array.data[11]
+      value: And now your secret lies only in our memories.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801475034714923451, guid: 35370ae6450e0034291d4b2f1cb5ace1, type: 3}
+      propertyPath: lines.Array.data[12]
+      value: ...
+      objectReference: {fileID: 0}
+    - target: {fileID: 3801475034714923451, guid: 35370ae6450e0034291d4b2f1cb5ace1, type: 3}
+      propertyPath: lines.Array.data[13]
+      value: Thanks for playing.
       objectReference: {fileID: 0}
     - target: {fileID: 7054253297960612845, guid: 35370ae6450e0034291d4b2f1cb5ace1, type: 3}
       propertyPath: m_RootOrder
