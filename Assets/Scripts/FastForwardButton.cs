@@ -22,7 +22,7 @@ public class FastForwardButton : ManagedBehaviour
             Time.timeScale = 1f;
         }
 
-        if (holdTimer > 5f)
+        if (holdTimer > 2.5f)
         {
             hintHidden = true;
         }

@@ -16,6 +16,7 @@ public enum DecisionMethod
     OppositeOfLeft,
     SameAsLeft,
     WithMajority,
+    AgainstMajority,
 }
 
 public enum AfterVoteAction
@@ -27,6 +28,7 @@ public enum AfterVoteAction
     SwitchAll,
     GainCash,
     ChangeLeftToGuilty,
+    ForceNeighbourVote,
 }
 
 public enum SpecialTrait
@@ -34,6 +36,9 @@ public enum SpecialTrait
     None,
     Dies,
     CantSell,
+    ExtraSell,
+    SummonSkeleton,
+    DiesAlways,
 }
 
 [CreateAssetMenu(fileName = "JurorData", menuName = "JurorData", order = 1)]

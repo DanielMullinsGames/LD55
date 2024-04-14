@@ -2500,12 +2500,17 @@ MonoBehaviour:
   - {fileID: 3029056915368636540, guid: 6c4e47ddc9b03254a8db571741edbb8c, type: 3}
   - {fileID: 3029056915368636540, guid: 8fc49a4dec4287a4aab2874a659cbbbb, type: 3}
   - {fileID: 3029056915368636540, guid: 80622914dfa8a264cab284bb89e8cb2c, type: 3}
+  - {fileID: 3029056915368636540, guid: 49cac55ec01970844902c2c1ccaf7d10, type: 3}
+  - {fileID: 3029056915368636540, guid: fb34b27ee3e34414b824405150dd13e1, type: 3}
   rareJurorPrefabPool:
   - {fileID: 3029056915368636540, guid: f7829d17531124e46b7ca59ac4453dfd, type: 3}
   - {fileID: 3029056915368636540, guid: ca3749f8397398447aa4d03c3e45f982, type: 3}
   - {fileID: 3029056915368636540, guid: 944021930cf035440963543bb2331f42, type: 3}
+  - {fileID: 3029056915368636540, guid: 110334540af751d4893d469fc302da44, type: 3}
+  - {fileID: 3029056915368636540, guid: fbaa30ae39091e34ba6f868e6b70de99, type: 3}
   postTutorialPool:
   - {fileID: 3029056915368636540, guid: ef1ca8d6993f6984490c148624e394d6, type: 3}
+  - {fileID: 3029056915368636540, guid: fae215d68988e87419c5d638eb0e354c, type: 3}
   tutorialJuror: {fileID: 3029056915368636540, guid: 217b5c02b44f2d74eb362c455d1f2f33, type: 3}
   jurorCardPrefab: {fileID: 5407991853193843346, guid: d56e446f7067f4f4ba7d101e17d0a4ff, type: 3}
   leftAnchor: {x: -3.25, y: -2.39}
@@ -3966,7 +3971,7 @@ MonoBehaviour:
     - {fileID: 1130649668}
   - name: You
     anim: {fileID: 176624295}
-    guiltPhases: 0100000002000000040000000600000008000000
+    guiltPhases: 0100000002000000040000000600000007000000
     activeOnStart: []
   debugDefendantIndex: 1
 --- !u!1 &975005960
