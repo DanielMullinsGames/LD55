@@ -784,7 +784,7 @@ TextureImporter:
         width: 59
         height: 79
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -817,6 +817,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: jurors_sheet_34
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 799
+        width: 201
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c3cacd73c5325740a41e8bc1d6a1e97
+      internalID: 1449614005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -845,6 +866,7 @@ TextureImporter:
       jurors_sheet_1: 922922226
       jurors_sheet_0: 1272628523
       jurors_sheet_22: 1294648485
+      jurors_sheet_34: 1449614005
       jurors_sheet_20: -1061808738
       jurors_sheet_23: -2029916005
       jurors_sheet_11: 221689676
