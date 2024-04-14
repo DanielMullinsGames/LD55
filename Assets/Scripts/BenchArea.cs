@@ -22,10 +22,20 @@ public class BenchArea : ManagedBehaviour
     [SerializeField]
     private List<JurorInteractable> jurorsOnBench = default;
 
+    [Header("DEBUG")]
+    public List<GameObject> debugAddJurors = new();
+
     protected override void ManagedInitialize()
     {
         instance = this;
         UpdateJurorPositions(null, immediate: true);
+    }
+
+    private void Start()
+    {
+#if UNITY_EDITOR
+        debugAddJurors.ForEach(x => SpawnJuror(x));
+#endif
     }
 
     public void SpawnJuror(GameObject prefab)

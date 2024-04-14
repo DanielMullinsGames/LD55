@@ -15,6 +15,7 @@ public enum DecisionMethod
     Normal,
     OppositeOfLeft,
     SameAsLeft,
+    WithMajority,
 }
 
 public enum AfterVoteAction
@@ -22,6 +23,10 @@ public enum AfterVoteAction
     None,
     ChangeLeftToInnocent,
     ExtraVote,
+    DoubleActivate,
+    SwitchAll,
+    GainCash,
+    ChangeLeftToGuilty,
 }
 
 [CreateAssetMenu(fileName = "JurorData", menuName = "JurorData", order = 1)]

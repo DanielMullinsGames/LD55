@@ -17,4 +17,4 @@ MonoBehaviour:
   detailText: 'After Vote: Gain $1'
   disposition: 2
   decisionMethod: 0
-  afterVoteAction: 0
+  afterVoteAction: 5

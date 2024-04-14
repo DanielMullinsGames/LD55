@@ -17,4 +17,4 @@ MonoBehaviour:
   detailText: 'After Vote: Change vote of left neighbour to Guilty'
   disposition: 2
   decisionMethod: 0
-  afterVoteAction: 0
+  afterVoteAction: 6

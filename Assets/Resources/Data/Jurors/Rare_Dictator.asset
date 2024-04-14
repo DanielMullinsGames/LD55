@@ -17,4 +17,4 @@ MonoBehaviour:
   detailText: 'After Vote: All jurors to the left reverse their vote'
   disposition: 1
   decisionMethod: 0
-  afterVoteAction: 0
+  afterVoteAction: 4

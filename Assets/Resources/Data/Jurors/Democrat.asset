@@ -16,5 +16,5 @@ MonoBehaviour:
   nameText: Democrat
   detailText: Votes the same as the current majority
   disposition: 3
-  decisionMethod: 0
+  decisionMethod: 3
   afterVoteAction: 0

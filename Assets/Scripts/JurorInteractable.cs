@@ -154,6 +154,35 @@ public class JurorInteractable : DraggableInteractable
                 }
                 yield return new WaitForSeconds(1f);
                 break;
+            case AfterVoteAction.ChangeLeftToGuilty:
+                anim.SetTrigger("priest");
+                yield return new WaitForSeconds(0.5f);
+                var left = GetLeftJuror();
+                if (left != null)
+                {
+                    left.ChangeVotes(Disposition.Guilty);
+                }
+                yield return new WaitForSeconds(1f);
+                break;
+            case AfterVoteAction.SwitchAll:
+                anim.SetTrigger("priest");
+                yield return new WaitForSeconds(0.5f);
+                int index = BenchArea.instance.Jurors.IndexOf(this);
+                for (int i = 0; i < index; i++)
+                {
+                    bool toGuilty = BenchArea.instance.Jurors[i].VoteOutcome == Disposition.Innocent;
+                    BenchArea.instance.Jurors[i].ChangeVotes(toGuilty ? Disposition.Guilty : Disposition.Innocent);
+                    yield return new WaitForSeconds(0.1f);
+                }
+                yield return new WaitForSeconds(0.1f);
+                break;
+            case AfterVoteAction.GainCash:
+                yield return new WaitForSeconds(0.1f);
+                anim.SetTrigger("voteguilty");
+                yield return new WaitForSeconds(0.25f);
+                CashManager.instance.AdjustCash(1);
+                yield return new WaitForSeconds(0.25f);
+                break;
             case AfterVoteAction.ExtraVote:
                 yield return CastVote(vote);
                 break;
@@ -178,6 +207,22 @@ public class JurorInteractable : DraggableInteractable
                 }
             case DecisionMethod.SameAsLeft:
                 return leftJurorVote;
+            case DecisionMethod.WithMajority:
+                int index = BenchArea.instance.Jurors.IndexOf(this);
+                int guilty = 0;
+                int innocent = 0;
+                for (int i = 0; i < index; i++)
+                {
+                    if (BenchArea.instance.Jurors[i].VoteOutcome == Disposition.Guilty)
+                    {
+                        guilty += BenchArea.instance.Jurors[i].NumVotes;
+                    }
+                    else if (BenchArea.instance.Jurors[i].VoteOutcome == Disposition.Innocent)
+                    {
+                        innocent += BenchArea.instance.Jurors[i].NumVotes;
+                    }
+                }
+                return innocent > guilty ? Disposition.Innocent : Disposition.Guilty;
             default:
                 return Disposition.None;
         }
