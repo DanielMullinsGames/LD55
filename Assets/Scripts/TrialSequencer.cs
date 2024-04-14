@@ -37,16 +37,6 @@ public class TrialSequencer : ManagedBehaviour
         judgeStand.transform.position = new Vector2(judgeStand.position.x, STAND_OFFSCREEN_Y);
     }
 
-#if UNITY_EDITOR
-    public override void ManagedUpdate()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(TrialSequence(3, null));
-        }
-    }
-#endif
-
     public IEnumerator TrialSequence(int requiredVotes, System.Action<bool> completedCallback)
     {
         // Setup
@@ -100,12 +90,13 @@ public class TrialSequencer : ManagedBehaviour
         PunchReqText(() => requirementText.text = guilty ? "GUILTY!" : "INNOCENT!");
         yield return new WaitForSeconds(2f);
 
+        // TODO: show defendant... killed?
+
         // Cleanup
         Tween.Position(judgeStand, new Vector2(judgeStand.position.x, STAND_OFFSCREEN_Y), 2f, 0f, Tween.EaseIn);
         Tween.Shake(cam.transform, new Vector3(0f, 0f, cam.transform.position.z), Vector2.one * 0.03f, 2f, 0f);
         Tween.Position(requirementTextParent, new Vector2(requirementTextParent.position.x, REQ_TEXT_OFFSCREEN_Y), 1f, 0f, Tween.EaseIn);
         yield return new WaitForSeconds(2f);
-
 
         bench.Jurors.ForEach(x => x.OnTrialEnded());
     }
