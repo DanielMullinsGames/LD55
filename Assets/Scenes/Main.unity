@@ -205,7 +205,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 87591098}
-  - component: {fileID: 87591099}
   m_Layer: 0
   m_Name: Cards
   m_TagString: Untagged
@@ -233,19 +232,11 @@ Transform:
   m_Father: {fileID: 1096055180}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &87591099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+--- !u!20 &119788233 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5532488999911366828, guid: b5f54d19fdde1e54d91ced0afeb463ab, type: 3}
+  m_PrefabInstance: {fileID: 5532489000374677292}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 87591097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33f21f045e187b140a47c12f39f07824, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bench: {fileID: 347916601}
 --- !u!1 &166371497
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,6 +452,7 @@ GameObject:
   m_Component:
   - component: {fileID: 241607238}
   - component: {fileID: 241607239}
+  - component: {fileID: 241607240}
   m_Layer: 0
   m_Name: JudgeAnim
   m_TagString: Untagged
@@ -505,6 +497,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &241607240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241607237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9aa81f26f91776409e3fdf9cfcb1949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &293127127
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1043,6 +1047,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 802493058}
+  - component: {fileID: 802493059}
   m_Layer: 0
   m_Name: Trial
   m_TagString: Untagged
@@ -1067,6 +1072,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &802493059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802493057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f21f045e187b140a47c12f39f07824, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bench: {fileID: 347916601}
+  judgeStand: {fileID: 368178174}
+  judgeAnim: {fileID: 241607239}
+  requirementText: {fileID: 1195133852}
+  cam: {fileID: 119788233}
 --- !u!1 &958295307
 GameObject:
   m_ObjectHideFlags: 0
