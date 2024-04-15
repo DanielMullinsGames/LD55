@@ -39,7 +39,7 @@ public class StoryScene : ManagedBehaviour
             text.text = line;
             AudioController.Instance.PlaySound2D("negate_" + Random.Range(1, 4));
             yield return new WaitForSeconds(0.1f);
-            yield return new WaitUntil(() => Input.anyKey || Input.GetMouseButton(0));
+            yield return new WaitUntil(() => Input.GetMouseButton(0));
             text.gameObject.SetActive(false);
             yield return new WaitForSeconds(0.1f);
         }

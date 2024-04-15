@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Salesman
   m_EditorClassIdentifier: 
   rare: 1
-  nameText: Sheriff
+  nameText: Salesman
   detailText: While on the bench, jurors sell for $2
   disposition: 2
   decisionMethod: 0
