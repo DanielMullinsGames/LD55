@@ -250,7 +250,14 @@ public class BuyPhaseSequencer : ManagedBehaviour
             buyableJurors[index].gameObject.SetActive(false);
             buyableJurorCards[index].gameObject.SetActive(false);
 
-            BenchArea.instance.SpawnJuror(juror.Prefab);
+            if (juror.Data.special == SpecialTrait.Clone && BenchArea.instance.Jurors.Count > 0)
+            {
+                BenchArea.instance.SpawnJuror(BenchArea.instance.Jurors[0].Prefab);
+            }
+            else
+            {
+                BenchArea.instance.SpawnJuror(juror.Prefab);
+            }
 
             CamShake();
             CashManager.instance.AdjustCash(-juror.Data.cost);

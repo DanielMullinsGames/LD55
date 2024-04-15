@@ -7237,6 +7237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 119788233}
+  sellHintText: {fileID: 298050665}
 --- !u!1 &1641825396
 GameObject:
   m_ObjectHideFlags: 0

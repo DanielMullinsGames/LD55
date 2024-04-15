@@ -12,16 +12,31 @@ public class SellArea : ManagedBehaviour
     [SerializeField]
     private Camera cam = default;
 
+    [SerializeField]
+    private TMPro.TextMeshPro sellHintText = default;
+
+    private bool hasSalesman;
+
     protected override void ManagedInitialize()
     {
         instance = this;
+    }
+
+    public override void ManagedUpdate()
+    {
+        hasSalesman = false;
+        if (BenchArea.instance.Jurors.Exists(x => x != null && !ReferenceEquals(x, null) && x.Data.special == SpecialTrait.ExtraSell))
+        {
+            hasSalesman = true;
+        }
+        sellHintText.text = "sell for $" + (hasSalesman ? 2 : 1).ToString();
     }
 
     public void SellJuror(JurorInteractable juror)
     {
         Destroy(juror.gameObject);
         CamShake();
-        CashManager.instance.AdjustCash(1);
+        CashManager.instance.AdjustCash(hasSalesman ? 2 : 1);
         AudioController.Instance.PlaySound2D("juror_die", 0.5f);
         AudioController.Instance.PlaySound2D("negate_3");
     }

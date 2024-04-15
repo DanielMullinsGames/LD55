@@ -46,6 +46,9 @@ public class JurorInteractable : DraggableInteractable
     [SerializeField]
     private GameObject rareSparkles = default;
 
+    [SerializeField]
+    private GameObject skeletonPrefab = default;
+
     private List<Vote> votes = new();
 
     private Disposition disposition = Disposition.Uncertain;
@@ -87,7 +90,7 @@ public class JurorInteractable : DraggableInteractable
 
     public void OnTrialEnded()
     {
-        if (data.special == SpecialTrait.Dies && Random.value > 0.5f)
+        if ((data.special == SpecialTrait.Dies && Random.value > 0.5f) || data.special == SpecialTrait.DiesAlways)
         {
             Destroy(gameObject);
             AudioController.Instance.PlaySound2D("juror_die", 0.5f);
@@ -97,6 +100,18 @@ public class JurorInteractable : DraggableInteractable
         {
             voted = false;
             SetCollisionEnabled(true);
+        }
+
+        if (data.special == SpecialTrait.SummonSkeleton)
+        {
+            CustomCoroutine.WaitThenExecute(0.1f, () =>
+            {
+                if (BenchArea.instance.Jurors.Count < 7)
+                {
+                    BenchArea.instance.SpawnJuror(skeletonPrefab);
+                    AudioController.Instance.PlaySound2D("negate_4");
+                }
+            });
         }
     }
 
@@ -149,7 +164,7 @@ public class JurorInteractable : DraggableInteractable
         }
     }
 
-    private IEnumerator CastVote(Disposition vote)
+    public IEnumerator CastVote(Disposition vote)
     {
         AudioController.Instance.PlaySound2D("paper_short", 1f, pitch: new AudioParams.Pitch(AudioParams.Pitch.Variation.VerySmall), repetition: new AudioParams.Repetition(0.05f));
 
@@ -176,7 +191,7 @@ public class JurorInteractable : DraggableInteractable
                 {
                     leftJuror.ChangeVotes(Disposition.Innocent);
                 }
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.5f);
                 break;
             case AfterVoteAction.ChangeLeftToGuilty:
                 anim.SetTrigger("fist");
@@ -186,7 +201,7 @@ public class JurorInteractable : DraggableInteractable
                 {
                     left.ChangeVotes(Disposition.Guilty);
                 }
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.5f);
                 break;
             case AfterVoteAction.SwitchAll:
                 anim.SetTrigger("gun");
@@ -199,6 +214,16 @@ public class JurorInteractable : DraggableInteractable
                     yield return new WaitForSeconds(0.1f);
                 }
                 yield return new WaitForSeconds(0.1f);
+                break;
+            case AfterVoteAction.ForceNeighbourVote:
+                anim.SetTrigger("gun");
+                yield return new WaitForSeconds(0.5f);
+                var left2 = GetLeftJuror();
+                if (left2 != null)
+                {
+                    yield return left2.CastVote(left2.VoteOutcome);
+                }
+                yield return new WaitForSeconds(0.5f);
                 break;
             case AfterVoteAction.DoubleActivate:
                 anim.SetTrigger("fist");
@@ -247,24 +272,31 @@ public class JurorInteractable : DraggableInteractable
             case DecisionMethod.SameAsLeft:
                 return leftJurorVote;
             case DecisionMethod.WithMajority:
-                int index = BenchArea.instance.Jurors.IndexOf(this);
-                int guilty = 0;
-                int innocent = 0;
-                for (int i = 0; i < index; i++)
-                {
-                    if (BenchArea.instance.Jurors[i].VoteOutcome == Disposition.Guilty)
-                    {
-                        guilty += BenchArea.instance.Jurors[i].NumVotes;
-                    }
-                    else if (BenchArea.instance.Jurors[i].VoteOutcome == Disposition.Innocent)
-                    {
-                        innocent += BenchArea.instance.Jurors[i].NumVotes;
-                    }
-                }
-                return innocent > guilty ? Disposition.Innocent : Disposition.Guilty;
+                return MajorityIsInnocent() ? Disposition.Innocent : Disposition.Guilty;
+            case DecisionMethod.AgainstMajority:
+                return MajorityIsInnocent() ? Disposition.Guilty : Disposition.Innocent;
             default:
                 return Disposition.None;
         }
+    }
+
+    private bool MajorityIsInnocent()
+    {
+        int index = BenchArea.instance.Jurors.IndexOf(this);
+        int guilty = 0;
+        int innocent = 0;
+        for (int i = 0; i < index; i++)
+        {
+            if (BenchArea.instance.Jurors[i].VoteOutcome == Disposition.Guilty)
+            {
+                guilty += BenchArea.instance.Jurors[i].NumVotes;
+            }
+            else if (BenchArea.instance.Jurors[i].VoteOutcome == Disposition.Innocent)
+            {
+                innocent += BenchArea.instance.Jurors[i].NumVotes;
+            }
+        }
+        return innocent > guilty;
     }
 
     private JurorInteractable GetLeftJuror()

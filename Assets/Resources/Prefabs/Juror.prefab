@@ -1049,6 +1049,7 @@ MonoBehaviour:
   buyButton: {fileID: 847004728505123006}
   buyButtonText: {fileID: 5300283260357510582}
   rareSparkles: {fileID: 4102268305802373960}
+  skeletonPrefab: {fileID: 3029056915368636540, guid: fae215d68988e87419c5d638eb0e354c, type: 3}
 --- !u!61 &2066569423664178816
 BoxCollider2D:
   m_ObjectHideFlags: 0

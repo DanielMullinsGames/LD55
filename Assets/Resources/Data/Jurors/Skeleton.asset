@@ -14,10 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rare: 0
   nameText: Skeleton
-  detailText: 'Votes the same as left neighbour
-
-    After trial: Dies'
-  disposition: 3
-  decisionMethod: 2
+  detailText: 'After trial: Dies'
+  disposition: 2
+  decisionMethod: 0
   afterVoteAction: 0
   special: 5

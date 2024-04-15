@@ -39,13 +39,14 @@ public enum SpecialTrait
     ExtraSell,
     SummonSkeleton,
     DiesAlways,
+    Clone,
 }
 
 [CreateAssetMenu(fileName = "JurorData", menuName = "JurorData", order = 1)]
 public class JurorData : ScriptableObject
 {
     public bool rare;
-    public int cost => rare ? 3 : 2;
+    public int cost => special == SpecialTrait.DiesAlways ? 1 : (rare ? 3 : 2);
     public string nameText;
     [TextArea]
     public string detailText;
