@@ -6,7 +6,7 @@ public class StartScreen : ManagedBehaviour
 {
     public override void ManagedUpdate()
     {
-        if (Time.timeSinceLevelLoad > 1f && Input.anyKeyDown || Input.GetMouseButton(0))
+        if (Time.timeSinceLevelLoad > 1f && Input.GetMouseButton(0))
         {
             AudioController.Instance.PlaySound2D("horn_1");
             enabled = false;

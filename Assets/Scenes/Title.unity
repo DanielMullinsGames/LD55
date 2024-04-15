@@ -161,7 +161,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: press any key to start
+  m_text: click the left mouse button to start
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0a57a62a534565645ba4d0511b64c648, type: 2}
   m_sharedMaterial: {fileID: 2033745107910324455, guid: 0a57a62a534565645ba4d0511b64c648, type: 2}
@@ -352,6 +352,79 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2592decbfffbdf844a5b2397347867bc, type: 3}
+--- !u!1001 &360092202
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8154639704235807410, guid: 77ee191e68796b04e968b2644f4e94d5, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.07058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154639704235807410, guid: 77ee191e68796b04e968b2644f4e94d5, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.043137256
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154639704235807410, guid: 77ee191e68796b04e968b2644f4e94d5, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.043137256
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154639704235807410, guid: 77ee191e68796b04e968b2644f4e94d5, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4279372555
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154639704876807873, guid: 77ee191e68796b04e968b2644f4e94d5, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154639704876807873, guid: 77ee191e68796b04e968b2644f4e94d5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154639704876807873, guid: 77ee191e68796b04e968b2644f4e94d5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154639704876807873, guid: 77ee191e68796b04e968b2644f4e94d5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154639704876807873, guid: 77ee191e68796b04e968b2644f4e94d5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154639704876807873, guid: 77ee191e68796b04e968b2644f4e94d5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154639704876807873, guid: 77ee191e68796b04e968b2644f4e94d5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154639704876807873, guid: 77ee191e68796b04e968b2644f4e94d5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154639704876807873, guid: 77ee191e68796b04e968b2644f4e94d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154639704876807873, guid: 77ee191e68796b04e968b2644f4e94d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154639704876807873, guid: 77ee191e68796b04e968b2644f4e94d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8154639704876807875, guid: 77ee191e68796b04e968b2644f4e94d5, type: 3}
+      propertyPath: m_Name
+      value: ResolutionOption
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 77ee191e68796b04e968b2644f4e94d5, type: 3}
 --- !u!1001 &497951191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1056,6 +1129,7 @@ MonoBehaviour:
   originalFrequency: 0.5
   volatility: 0
   objectToBlink: {fileID: 276871794}
+  blinkSound: 
 --- !u!4 &1608193973
 Transform:
   m_ObjectHideFlags: 0
