@@ -78,7 +78,7 @@ public class BuyPhaseSequencer : ManagedBehaviour
         endedPhase = false;
         Tween.Shake(cam.transform, new Vector3(0f, 0f, cam.transform.position.z), Vector2.one * 0.04f, 1.5f, 0f);
         Tween.LocalPosition(uiParent, Vector2.zero, 1.5f, 0f, Tween.EaseOutStrong);
-        AudioController.Instance.PlaySound2D("weird_power");
+        AudioController.Instance.PlaySound2D("weird_power", 0.75f);
         yield return new WaitForSeconds(1.5f);
         endPhaseButton.gameObject.SetActive(!tutorial1 && !tutorial2);
         yield return new WaitForSeconds(0.1f);
@@ -129,7 +129,7 @@ public class BuyPhaseSequencer : ManagedBehaviour
         yield return new WaitForSeconds(0.2f);
         Tween.Shake(cam.transform, new Vector3(0f, 0f, cam.transform.position.z), Vector2.one * 0.04f, 1.5f, 0f);
         Tween.LocalPosition(uiParent, OFFSCREEN_UI_POS, 1.5f, 0f, Tween.EaseIn);
-        AudioController.Instance.PlaySound2D("weird_power", pitch: new AudioParams.Pitch(0.9f));
+        AudioController.Instance.PlaySound2D("weird_power", 0.75f, pitch: new AudioParams.Pitch(0.9f));
         yield return new WaitForSeconds(1.35f);
     }
 

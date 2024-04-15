@@ -17,7 +17,7 @@ public class BlinkGameObjectActive : TimedBehaviour
 
         if (objectToBlink.activeSelf && !string.IsNullOrEmpty(blinkSound))
         {
-            AudioController.Instance.PlaySound2D(blinkSound, volume: 0.5f);
+            AudioController.Instance.PlaySound2D(blinkSound, volume: 0.25f);
         }
     }
 }

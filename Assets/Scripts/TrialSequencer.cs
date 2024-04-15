@@ -45,12 +45,17 @@ public class TrialSequencer : ManagedBehaviour
 
         Tween.Position(judgeStand, new Vector2(judgeStand.position.x, standOnScreenY), 3f, 0f, Tween.EaseOutStrong);
         Tween.Shake(cam.transform, new Vector3(0f, 0f, cam.transform.position.z), Vector2.one * 0.05f, 3f, 0f);
-        AudioController.Instance.PlaySound2D("weird_power", pitch: new AudioParams.Pitch(0.7f));
+        AudioController.Instance.PlaySound2D("weird_power", 0.75f, pitch: new AudioParams.Pitch(0.7f));
         yield return new WaitForSeconds(2.5f);
 
         Tween.Position(requirementTextParent, new Vector2(requirementTextParent.position.x, textOnScreenY), 1f, 0f, Tween.EaseOutStrong);
         yield return new WaitForSeconds(1f);
 
+        AudioSource music = null;
+        if (lastTrial)
+        {
+            music = AudioController.Instance.PlaySound2D("bossmusic");
+        }
         AudioController.Instance.PlaySound2D("judge_order");
         judgeAnim.SetTrigger("order");
         bench.Jurors.ForEach(x => x.SetCollisionEnabled(false));
@@ -65,6 +70,11 @@ public class TrialSequencer : ManagedBehaviour
 
         var successDisp = GameFlowManager.ProveInnocence ? Disposition.Innocent : Disposition.Guilty;
         var failureDisp = GameFlowManager.ProveInnocence ? Disposition.Guilty : Disposition.Innocent;
+
+        if (music != null)
+        {
+            AudioController.Instance.FadeSourceVolume(music, 0f, 1f);
+        }    
 
         // Count Votes
         foreach (var juror in bench.Jurors)
@@ -117,7 +127,7 @@ public class TrialSequencer : ManagedBehaviour
         Tween.Position(judgeStand, new Vector2(judgeStand.position.x, STAND_OFFSCREEN_Y), 2f, 0f, Tween.EaseIn);
         Tween.Shake(cam.transform, new Vector3(0f, 0f, cam.transform.position.z), Vector2.one * 0.03f, 2f, 0f);
         Tween.Position(requirementTextParent, new Vector2(requirementTextParent.position.x, REQ_TEXT_OFFSCREEN_Y), 1f, 0f, Tween.EaseIn);
-        AudioController.Instance.PlaySound2D("weird_power", pitch: new AudioParams.Pitch(0.8f));
+        AudioController.Instance.PlaySound2D("weird_power", 0.75f, pitch: new AudioParams.Pitch(0.8f));
         yield return new WaitForSeconds(2f);
 
         if (!lastTrial)
@@ -136,7 +146,8 @@ public class TrialSequencer : ManagedBehaviour
 
     private void UpdateReqText(int required, int numVotes)
     {
-        requirementText.text = string.Format("{0} of {1} guilty votes needed", numVotes, required);
+        string valance = GameFlowManager.ProveInnocence ? " innocent " : " guilty ";
+        requirementText.text = string.Format("{0} of {1}" + valance + "votes needed", numVotes, required);
     }
 
     private void PunchReqText(System.Action impactCallback)

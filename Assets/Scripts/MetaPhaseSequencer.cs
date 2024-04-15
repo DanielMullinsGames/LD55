@@ -87,7 +87,7 @@ public class MetaPhaseSequencer : ManagedBehaviour
         yield return new WaitForSeconds(2f);
         blinkers[index].enabled = false;
         trialTexts[index].gameObject.SetActive(true);
-        AudioController.Instance.PlaySound2D("metal_tap", 0.5f);
+        AudioController.Instance.PlaySound2D("metal_tap", 0.25f);
         Tween.Position(transform, new Vector2(0f, 10f), 0.5f, 0f, Tween.EaseIn);
         yield return new WaitForSeconds(0.5f);
         yield return JurorPowerSequence(index);
