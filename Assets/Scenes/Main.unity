@@ -3956,7 +3956,7 @@ MonoBehaviour:
   finalVerdictText: {fileID: 1166036056}
   crossHairs: {fileID: 706598103}
   defendants:
-  - name: Tammy The Pidgeon
+  - name: Tammy The Pigeon
     anim: {fileID: 58986464}
     guiltPhases: 0100000001000000020000000300000004000000
     activeOnStart: []

@@ -122,7 +122,7 @@ public class MetaPhaseSequencer : ManagedBehaviour
         // Mickey
         if (GameFlowManager.defendantIndex == 2)
         {
-            if (roundIndex > 0 && BenchArea.instance.Jurors.Count < 7)
+            if (roundIndex > 1 && BenchArea.instance.Jurors.Count < 7)
             {
                 defendantPowerText.gameObject.SetActive(true);
                 defendantPowerText.text = "DEFENDANT POWER: ALL ABOARD!";

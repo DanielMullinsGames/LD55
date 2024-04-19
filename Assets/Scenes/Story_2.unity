@@ -391,7 +391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3801475034714923451, guid: 35370ae6450e0034291d4b2f1cb5ace1, type: 3}
       propertyPath: lines.Array.data[0]
-      value: Nice work, Pete. You won a case against a pidgeon.
+      value: Nice work, Pete. You won a case against a pigeon.
       objectReference: {fileID: 0}
     - target: {fileID: 3801475034714923451, guid: 35370ae6450e0034291d4b2f1cb5ace1, type: 3}
       propertyPath: lines.Array.data[1]
